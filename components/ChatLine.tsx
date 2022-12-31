@@ -57,10 +57,10 @@ export function ChatLine({ who = "bot", message }: Message) {
           className={clsx(
             "text ",
             who == "bot"
-              ? "font-semibold font- bg-zinc-400 float-right px-4 py-5 mb-5 rounded-full shadow-lg ring-1 ring-zinc-100 sm:px-6"
+              ? "font-semibold font- bg-zinc-400 float-right px-4 py-5 mb-5 rounded-md shadow-lg ring-1 ring-zinc-100 sm:px-6"
               : "text-white-400 bg-orange-300",
             who == "user"
-              ? "font-semibold font- bg-cyan-200 float-right px-4 py-5 mb-5 rounded-full shadow-lg ring-1 ring-zinc-100 sm:px-6"
+              ? "font-semibold font- bg-cyan-200 float-right px-4 py-5 mb-5 rounded-md shadow-lg ring-1 ring-zinc-100 sm:px-6"
               : "text-white-400 bg-orange-300"
           )}
         >
