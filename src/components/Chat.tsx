@@ -93,9 +93,8 @@ export function Chat() {
   useEffect(() => {
     // 👇️ scroll to bottom every time messages change
     if (!loading) {
-      bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-    } else {
       bottomRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
+    } else {
     }
   }, [messages]);
   return (
