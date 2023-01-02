@@ -14,7 +14,7 @@ export const initialMessages: Message[] = [
 ];
 
 const InputMessage = ({ input, setInput, sendMessage }: any) => (
-  <div className="clear-both mt-6 flex">
+  <div className="clear-both mt-6 flex ">
     <input
       type="text"
       aria-label="chat input"
@@ -91,7 +91,7 @@ export function Chat() {
   };
 
   return (
-    <div className="rounded-2xl border-zinc-100 lg:border lg:p-6">
+    <div className=".scrollbar-hide  no-scrollbar max-h-96 overflow-y-auto  rounded-2xl border-zinc-100 lg:border lg:p-6">
       {messages.map(({ message, who }, index) => (
         <>
           <ChatLine key={index} who={who} message={message} />
