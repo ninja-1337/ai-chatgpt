@@ -91,20 +91,22 @@ export function Chat() {
   };
 
   return (
-    <div className=".scrollbar-hide  no-scrollbar max-h-96 overflow-y-auto  rounded-2xl border-zinc-100 lg:border lg:p-6">
-      {messages.map(({ message, who }, index) => (
-        <>
-          <ChatLine key={index} who={who} message={message} />
-        </>
-      ))}
+    <div className=" h-3/6   rounded-sm border-zinc-100 lg:border lg:p-6">
+      <div className=".scrollbar-hide  no-scrollbar max-h-96 overflow-y-auto">
+        {messages.map(({ message, who }, index) => (
+          <>
+            <ChatLine key={index} who={who} message={message} />
+          </>
+        ))}
 
-      {loading && <LoadingChatLine />}
+        {loading && <LoadingChatLine />}
 
-      {messages.length < 2 && (
-        <span className="clear-both mx-auto flex flex-grow text-gray-600">
-          Type a message to start the conversation
-        </span>
-      )}
+        {messages.length < 2 && (
+          <span className="clear-both mx-auto flex flex-grow text-gray-600">
+            Type a message to start the conversation
+          </span>
+        )}
+      </div>
       <InputMessage
         input={input}
         setInput={setInput}
