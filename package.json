@@ -1,31 +1,56 @@
 {
-  "repository": "https://github.com/vercel/examples.git",
-  "license": "MIT",
+  "name": "ai",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "dev": "next dev",
+    "postinstall": "prisma generate",
+    "lint": "next lint",
+    "start": "next start"
   },
   "dependencies": {
-    "@vercel/analytics": "^0.1.6",
+    "@headlessui/react": "^1.7.7",
+    "@next-auth/prisma-adapter": "^1.0.5",
+    "@nextui-org/react": "^1.0.0-beta.11",
+    "@prisma/client": "^4.5.0",
+    "@tanstack/react-query": "^4.16.0",
+    "@trpc/client": "^10.0.0",
+    "@trpc/next": "^10.0.0",
+    "@trpc/react-query": "^10.0.0",
+    "@trpc/server": "^10.0.0",
     "@vercel/examples-ui": "^1.0.4",
-    "next": "latest",
-    "openai": "^3.1.0",
-    "react": "latest",
+    "clsx": "^1.2.1",
+    "date-fns": "^2.29.3",
+    "next": "13.1.1",
+    "next-auth": "^4.18.3",
+    "react": "18.2.0",
     "react-cookie": "^4.1.1",
-    "react-dom": "latest",
-    "react-wrap-balancer": "^0.1.5"
+    "react-dom": "18.2.0",
+    "react-modal-hover": "^1.1.13",
+    "react-social-icons": "^5.15.0",
+    "react-wrap-balancer": "^0.2.4",
+    "superjson": "1.9.1",
+    "zod": "^3.18.0"
   },
   "devDependencies": {
-    "@types/node": "^17",
-    "@types/react": "latest",
+    "@types/node": "^18.0.0",
+    "@types/prettier": "^2.7.2",
+    "@types/react": "^18.0.14",
+    "@types/react-dom": "^18.0.5",
+    "@typescript-eslint/eslint-plugin": "^5.33.0",
+    "@typescript-eslint/parser": "^5.33.0",
     "autoprefixer": "^10.4.7",
-    "eslint": "^8.11.0",
-    "eslint-config-next": "^12.1.0",
+    "eslint": "^8.26.0",
+    "eslint-config-next": "13.1.1",
     "postcss": "^8.4.14",
-    "tailwindcss": "^3.0.24",
-    "typescript": "^4.7.3"
+    "prettier": "^2.8.1",
+    "prettier-plugin-tailwindcss": "^0.2.1",
+    "prisma": "^4.5.0",
+    "tailwindcss": "^3.2.0",
+    "typescript": "^4.8.4"
+  },
+  "ct3aMetadata": {
+    "initVersion": "6.12.0"
   }
 }

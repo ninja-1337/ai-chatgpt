@@ -14,7 +14,7 @@ export const initialMessages: Message[] = [
 ];
 
 const InputMessage = ({ input, setInput, sendMessage }: any) => (
-  <div className="flex clear-both mt-6">
+  <div className="clear-both mt-6 flex">
     <input
       type="text"
       aria-label="chat input"
@@ -33,7 +33,7 @@ const InputMessage = ({ input, setInput, sendMessage }: any) => (
     />
     <Button
       type="submit"
-      className="flex-none ml-4"
+      className="ml-4 flex-none"
       onClick={() => {
         sendMessage(input);
         setInput("");
@@ -93,13 +93,15 @@ export function Chat() {
   return (
     <div className="rounded-2xl border-zinc-100 lg:border lg:p-6">
       {messages.map(({ message, who }, index) => (
-        <ChatLine key={index} who={who} message={message} />
+        <>
+          <ChatLine key={index} who={who} message={message} />
+        </>
       ))}
 
       {loading && <LoadingChatLine />}
 
       {messages.length < 2 && (
-        <span className="flex flex-grow clear-both mx-auto text-gray-600">
+        <span className="clear-both mx-auto flex flex-grow text-gray-600">
           Type a message to start the conversation
         </span>
       )}
