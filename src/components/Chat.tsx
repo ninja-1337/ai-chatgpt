@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Button } from "./Button";
 import { type Message, ChatLine, LoadingChatLine } from "./ChatLine";
 import { useCookies } from "react-cookie";
@@ -49,7 +49,7 @@ export function Chat() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [cookie, setCookie] = useCookies([COOKIE_NAME]);
-
+  const bottomRef: any = useRef(null);
   useEffect(() => {
     if (!cookie[COOKIE_NAME]) {
       // generate a semi random short id
@@ -61,6 +61,7 @@ export function Chat() {
   // send message to API /api/chat endpoint
   const sendMessage = async (message: string) => {
     setLoading(true);
+
     const newMessages = [
       ...messages,
       { message: message, who: "user" } as Message,
@@ -89,10 +90,17 @@ export function Chat() {
     ]);
     setLoading(false);
   };
-
+  useEffect(() => {
+    // 👇️ scroll to bottom every time messages change
+    if (!loading) {
+      bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messages]);
   return (
     <div className=" h-3/6   rounded-sm border-zinc-100 lg:border lg:p-6">
-      <div className=".scrollbar-hide  no-scrollbar max-h-96 overflow-y-auto">
+      <div className=".scrollbar-hide  no-scrollbar  max-h-96 snap-end justify-end  overflow-y-auto">
         {messages.map(({ message, who }, index) => (
           <>
             <ChatLine key={index} who={who} message={message} />
@@ -106,6 +114,8 @@ export function Chat() {
             Type a message to start the conversation
           </span>
         )}
+
+        <p ref={bottomRef} />
       </div>
       <InputMessage
         input={input}
