@@ -14,7 +14,7 @@ const configuration = new Configuration({
 
 const botName = "AI";
 const userName = "News reporter"; // TODO: move to ENV var
-const firstMessge = initialMessages[0].message;
+const firstMessge = initialMessages[0]?.message;
 
 const openai = new OpenAIApi(configuration);
 
@@ -25,7 +25,7 @@ const generatePromptFromMessages = (messages: Message[]) => {
   let prompt = "";
 
   // add first user message to prompt
-  prompt += messages[1].message;
+  prompt += messages[1]?.message;
 
   // remove first conversaiton (first 2 messages)
   const messagesWithoutFirstConvo = messages.slice(2);
@@ -72,7 +72,7 @@ export default async function handler(req: any, res: any) {
    * For Teams, the execution timeout is 60 seconds (Pro plan) or 900 seconds (Enterprise plan).
    */
   const response = await openai.createCompletion(payload);
-  const firstResponse = response.data.choices[0].text;
+  const firstResponse = response.data.choices[0]?.text;
 
   res.status(200).json({ text: firstResponse });
 }
