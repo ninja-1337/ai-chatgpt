@@ -10,30 +10,27 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <Head>
-        <title>Portfolio</title>
-        <meta name="description" content="About" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <main className="container mx-auto flex min-h-fit flex-col items-center justify-center p-2">
-        <h1 className="text-5xl font-extrabold leading-normal text-gray-700 md:text-[5rem]">
-          <span className="text-orange-300">About</span>
-        </h1>
-        <p className="text-2xl text-blue-300">
-          Some of the things I am passionate about:
-        </p>
+      <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#0b3bd6] to-[#f8a221]">
+        <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
+          <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
+            About <span className="text-[hsl(280,100%,70%)]">Agent</span> App
+          </h1>
+          <h1 className="text-5xl font-extrabold leading-normal text-white md:text-[5rem]">
+            <span className="text-2xl font-bold text-white"></span>
+          </h1>
 
-        <div className="mt-3 grid gap-3 pt-3 text-center md:grid-cols-2 lg:w-2/3">
-          <TechnologyCard
-            name="FullStack Development"
-            description=""
-            documentation=""
-          />
-          <TechnologyCard
-            name="Web3 Dapp Development"
-            description="Following almost every ethereum developer out there"
-            documentation="https://www.typescriptlang.org/"
-          />
+          <p className="text-2xl font-bold text-white">
+            Our app allows you to generate high-quality, human-like text for a
+            variety of use cases. Whether you need a summary of a long article,
+            a translation of a document, or an answer to a difficult question,
+            our app can help. Simply enter your text or query and let our app's
+            GPT-3-powered agent do the rest. You'll be amazed at how accurate
+            and natural the generated text is.
+          </p>
+          <p className="text-2xl font-bold text-white">
+            Thank you for trying out our app. We hope you find it useful and
+            convenient to use.
+          </p>
         </div>
       </main>
     </>
@@ -41,46 +38,3 @@ const Home: NextPage = () => {
 };
 
 export default Home;
-
-const AuthShowcase: React.FC = () => {
-  const { data: secretMessage } = trpc.auth.getSecretMessage2.useQuery();
-
-  const { data: sessionData } = useSession();
-
-  return (
-    <div className="flex flex-col items-center justify-center gap-2">
-      {secretMessage && (
-        <>
-          <Link className="text-2xl text-blue-900" href="/stripe">
-            Become a Paid Member
-          </Link>
-        </>
-      )}
-    </div>
-  );
-};
-
-type TechnologyCardProps = {
-  name: string;
-  description: string;
-  documentation: string;
-};
-
-const TechnologyCard = ({
-  name,
-  description,
-  documentation,
-}: TechnologyCardProps) => {
-  return (
-    <section className="flex flex-col justify-center rounded border-2 border-gray-500 p-6 shadow-xl duration-500 motion-safe:hover:scale-105">
-      <h2 className="text-lg text-gray-700">{name}</h2>
-      <p className="text-sm text-gray-600">{description}</p>
-      <Link
-        className="m-auto mt-3 w-fit text-sm text-violet-500 underline decoration-dotted underline-offset-2"
-        href={documentation}
-        target="_blank"
-        rel="noreferrer"
-      ></Link>
-    </section>
-  );
-};

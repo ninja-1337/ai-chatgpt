@@ -2,14 +2,21 @@ import { useEffect, useState, useRef } from "react";
 import { Button } from "./Button";
 import { type Message, ChatLine, LoadingChatLine } from "./ChatLine";
 import { useCookies } from "react-cookie";
+import id from "date-fns/esm/locale/id/index.js";
 
 const COOKIE_NAME = "nextjs-example-ai-chat-gpt3";
 
 // default first message to display in UI (not necessary to define the prompt)
 export const initialMessages: Message[] = [
   {
+    who: "user",
+    message:
+      "I want you to act as a philosophy teacher. I will provide some topics related to the study of philosophy, and it will be your job to explain these concepts in an easy-to-understand manner. This could include providing examples, posing questions or breaking down complex ideas into smaller pieces that are easier to comprehend. My first request is “I need help understanding how different philosophical theories can be applied in everyday life.”",
+  },
+  {
     who: "bot",
-    message: "Hi! I’m A coding AI assistant. Ask me anything!",
+    message:
+      "Hi! I’m A philosophy teacher.You will provide some topics related to the study of philosophy and I will eplain the concepts. Ask me anything!",
   },
 ];
 
@@ -83,7 +90,7 @@ export function Chat() {
 
     // strip out white spaces from the bot message
     const botNewMessage = data.text.trim();
-
+    id;
     setMessages([
       ...newMessages,
       { message: botNewMessage, who: "bot" } as Message,
