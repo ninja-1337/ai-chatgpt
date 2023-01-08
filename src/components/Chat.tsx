@@ -41,6 +41,16 @@ const InputMessage = ({ input, setInput, sendMessage }: any) => (
     >
       Say
     </Button>
+    <Button
+      type=""
+      className="ml-4 flex-none"
+      onClick={() => {
+        sendMessage(input);
+        setInput("");
+      }}
+    >
+      Share-Chat
+    </Button>
   </div>
 );
 
