@@ -1,27 +1,20 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "./Button";
 import { type Message, ChatLine, LoadingChatLine } from "./ChatLine";
 import { useCookies } from "react-cookie";
-import id from "date-fns/esm/locale/id/index.js";
 
 const COOKIE_NAME = "nextjs-example-ai-chat-gpt3";
 
 // default first message to display in UI (not necessary to define the prompt)
 export const initialMessages: Message[] = [
   {
-    who: "user",
-    message:
-      "I want you to act as a philosophy teacher. I will provide some topics related to the study of philosophy, and it will be your job to explain these concepts in an easy-to-understand manner. This could include providing examples, posing questions or breaking down complex ideas into smaller pieces that are easier to comprehend. My first request is “I need help understanding how different philosophical theories can be applied in everyday life.”",
-  },
-  {
     who: "bot",
-    message:
-      "Hi! I’m A philosophy teacher.You will provide some topics related to the study of philosophy and I will eplain the concepts. Ask me anything!",
+    message: "Hi! I’m A coding AI assistant. Ask me anything!",
   },
 ];
 
 const InputMessage = ({ input, setInput, sendMessage }: any) => (
-  <div className="clear-both mt-6 flex ">
+  <div className="clear-both mt-6 flex">
     <input
       type="text"
       aria-label="chat input"
@@ -56,7 +49,7 @@ export function Chat() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [cookie, setCookie] = useCookies([COOKIE_NAME]);
-  const bottomRef: any = useRef(null);
+
   useEffect(() => {
     if (!cookie[COOKIE_NAME]) {
       // generate a semi random short id
@@ -68,7 +61,6 @@ export function Chat() {
   // send message to API /api/chat endpoint
   const sendMessage = async (message: string) => {
     setLoading(true);
-
     const newMessages = [
       ...messages,
       { message: message, who: "user" } as Message,
@@ -90,39 +82,29 @@ export function Chat() {
 
     // strip out white spaces from the bot message
     const botNewMessage = data.text.trim();
-    id;
+
     setMessages([
       ...newMessages,
       { message: botNewMessage, who: "bot" } as Message,
     ]);
     setLoading(false);
   };
-  useEffect(() => {
-    // 👇️ scroll to bottom every time messages change
-    if (!loading) {
-    } else {
-      bottomRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
-    }
-  }, [messages]);
+
   return (
-    <div className=" h-3/6   rounded-sm border-zinc-100 lg:border lg:p-6">
-      <div className=".scrollbar-hide  no-scrollbar  max-h-96 snap-end justify-end  overflow-y-auto">
-        {messages.map(({ message, who }, index) => (
-          <>
-            <ChatLine key={index} who={who} message={message} />
-          </>
-        ))}
+    <div className="rounded-2xl border-zinc-100 lg:border lg:p-6">
+      {messages.map(({ message, who }, index) => (
+        <>
+          <ChatLine key={index} who={who} message={message} />
+        </>
+      ))}
 
-        {loading && <LoadingChatLine />}
+      {loading && <LoadingChatLine />}
 
-        {messages.length < 2 && (
-          <span className="clear-both mx-auto flex flex-grow text-gray-600">
-            Type a message to start the conversation
-          </span>
-        )}
-
-        <p ref={bottomRef} />
-      </div>
+      {messages.length < 2 && (
+        <span className="clear-both mx-auto flex flex-grow text-gray-600">
+          Type a message to start the conversation
+        </span>
+      )}
       <InputMessage
         input={input}
         setInput={setInput}

@@ -23,165 +23,163 @@ function NavBar() {
     "Help & Feedback",
   ];
   return (
-    <div>
-      <Navbar className="from-[#0b3bd6] to-[#f8a221]" variant="floating">
-        <Navbar.Toggle showIn="xs" />
-        <Navbar.Brand
-          css={{
-            "@xs": {
-              w: "12%",
-            },
-          }}
-        >
-          <Link href="/">
-            <Text b color="inherit" hideIn="xs">
-              Folio
-            </Text>
-          </Link>
-        </Navbar.Brand>
-        <Navbar.Content
-          enableCursorHighlight
-          activeColor="warning"
-          hideIn="xs"
-          variant="highlight"
-        >
-          <Link color="secondary" href="ai">
-            App
-          </Link>
-          <Spacer />
-          <Link href="/contact">Contact Us</Link>
-          <Spacer />
-          <Link href="/agents">A.I Agents</Link>
-          <Spacer />
-          <Link href="/guestbook">Reviews</Link>
-          <Spacer />
-          <Link href="/about">About</Link>
-        </Navbar.Content>
-        <Navbar.Content
-          css={{
-            "@xs": {
-              w: "12%",
-              jc: "flex-end",
-            },
-          }}
-        >
-          <Dropdown placement="bottom-right">
-            <Navbar.Item>
-              <>
-                {session?.user?.image && (
-                  <Dropdown.Trigger>
-                    <Avatar
-                      bordered
-                      size="lg"
-                      as="button"
-                      color="secondary"
-                      src={session?.user.image}
-                    />
-                  </Dropdown.Trigger>
-                )}
-                {!session?.user?.image && (
-                  <Dropdown.Button>Login</Dropdown.Button>
-                )}
-              </>
-            </Navbar.Item>
+    <Navbar className="from-[#0b3bd6] to-[#f8a221]">
+      <Navbar.Toggle showIn="xs" />
+      <Navbar.Brand
+        css={{
+          "@xs": {
+            w: "12%",
+          },
+        }}
+      >
+        <Link href="/">
+          <Text b color="inherit" hideIn="xs">
+            Folio
+          </Text>
+        </Link>
+      </Navbar.Brand>
+      <Navbar.Content
+        enableCursorHighlight
+        activeColor="warning"
+        hideIn="xs"
+        variant="highlight"
+      >
+        <Link color="secondary" href="ai">
+          App
+        </Link>
+        <Spacer />
+        <Link href="/contact">Contact Me</Link>
+        <Spacer />
+        <Link href="/agents">Agents</Link>
+        <Spacer />
+        <Link href="/guestbook">Guestbook</Link>
+        <Spacer />
+        <Link href="/about">About</Link>
+      </Navbar.Content>
+      <Navbar.Content
+        css={{
+          "@xs": {
+            w: "12%",
+            jc: "flex-end",
+          },
+        }}
+      >
+        <Dropdown placement="bottom-right">
+          <Navbar.Item>
+            <>
+              {session?.user?.image && (
+                <Dropdown.Trigger>
+                  <Avatar
+                    bordered
+                    size="lg"
+                    as="button"
+                    color="secondary"
+                    src={session?.user.image}
+                  />
+                </Dropdown.Trigger>
+              )}
+              {!session?.user?.image && (
+                <Dropdown.Button>Login</Dropdown.Button>
+              )}
+            </>
+          </Navbar.Item>
 
-            {session?.user?.image && (
-              <Dropdown.Menu
-                aria-label="User menu actions"
-                color="warning"
-                onAction={(actionKey) => console.log({ actionKey })}
-              >
-                <Dropdown.Item key="profile" css={{ height: "$18" }}>
-                  <Text b color="inherit" css={{ d: "flex" }}>
-                    Signed in as
-                  </Text>
-                  <Text b color="inherit" css={{ d: "flex" }}>
-                    {session.user.name}
-                  </Text>
-                </Dropdown.Item>
+          {session?.user?.image && (
+            <Dropdown.Menu
+              aria-label="User menu actions"
+              color="warning"
+              onAction={(actionKey) => console.log({ actionKey })}
+            >
+              <Dropdown.Item key="profile" css={{ height: "$18" }}>
+                <Text b color="inherit" css={{ d: "flex" }}>
+                  Signed in as
+                </Text>
+                <Text b color="inherit" css={{ d: "flex" }}>
+                  {session.user.name}
+                </Text>
+              </Dropdown.Item>
 
-                <Dropdown.Item key="team_settings">
-                  <Link href="/profile">Profile</Link>
-                </Dropdown.Item>
-                {/* <Dropdown.Item key="system">
+              <Dropdown.Item key="team_settings">
+                <Link href="/profile">Profile</Link>
+              </Dropdown.Item>
+              {/* <Dropdown.Item key="system">
                 {" "}
                 <Link href="/extprofile">External Profile</Link>
               </Dropdown.Item> */}
 
-                <Dropdown.Item key="settings" withDivider>
-                  <Link href="/settings">My Settings</Link>
-                </Dropdown.Item>
+              <Dropdown.Item key="settings" withDivider>
+                <Link href="/settings">My Settings</Link>
+              </Dropdown.Item>
 
-                <Dropdown.Item key="analytics" withDivider>
-                  <Link href="/friends">My Friends</Link>
-                </Dropdown.Item>
+              <Dropdown.Item key="analytics" withDivider>
+                <Link href="/friends">My Friends</Link>
+              </Dropdown.Item>
 
-                <Dropdown.Item key="logout" withDivider color="error">
-                  <div>
-                    {session?.user?.image && (
-                      <button onClick={() => signOut()}>Logout</button>
-                    )}
-                  </div>
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            )}
-            {!session?.user?.image && (
-              <Dropdown.Menu aria-label="User menu actions" color="warning">
-                <Dropdown.Item key="profile" css={{ height: "$18" }}>
-                  <button onClick={() => signIn("google")}>
-                    <Text className="p-1" b color="inherit">
-                      Login with Google
-                    </Text>
-                    <SocialIcon
-                      network="google"
-                      style={{ height: 25, width: 25 }}
-                    />
-                  </button>
-                </Dropdown.Item>
-                <Dropdown.Item key="profile" css={{ height: "$18" }}>
-                  <button onClick={() => signIn("discord")}>
-                    <Text className="p-1" b>
-                      Login with Discord
-                    </Text>
-                    <SocialIcon
-                      network="discord"
-                      style={{ height: 25, width: 25 }}
-                    />
-                  </button>
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            )}
-          </Dropdown>
-        </Navbar.Content>
-        <Navbar.Collapse disableAnimation>
-          <Navbar.CollapseItem key="About" activeColor="warning">
-            <Link color="inherit" href="/projects">
-              Projects
-            </Link>
-          </Navbar.CollapseItem>
-          <Navbar.CollapseItem key="About" activeColor="warning">
-            <Link color="inherit" href="/contact">
-              Contact Me
-            </Link>
-          </Navbar.CollapseItem>
-          <Navbar.CollapseItem key="Projects" activeColor="warning">
-            <Link color="inherit" href="/stripe">
-              Buy me a coffee
-            </Link>
-          </Navbar.CollapseItem>
-          <Navbar.CollapseItem key="About" activeColor="warning">
-            <Link color="inherit" href="/about">
-              About
-            </Link>
-          </Navbar.CollapseItem>
-          <Navbar.CollapseItem key="About" activeColor="warning">
-            <Link color="inherit" href="/guestbook">
-              Guests Book
-            </Link>
-          </Navbar.CollapseItem>
-        </Navbar.Collapse>
-      </Navbar>
-    </div>
+              <Dropdown.Item key="logout" withDivider color="error">
+                <div>
+                  {session?.user?.image && (
+                    <button onClick={() => signOut()}>Logout</button>
+                  )}
+                </div>
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          )}
+          {!session?.user?.image && (
+            <Dropdown.Menu aria-label="User menu actions" color="warning">
+              <Dropdown.Item key="profile" css={{ height: "$18" }}>
+                <button onClick={() => signIn("google")}>
+                  <Text className="p-1" b color="inherit">
+                    Login with Google
+                  </Text>
+                  <SocialIcon
+                    network="google"
+                    style={{ height: 25, width: 25 }}
+                  />
+                </button>
+              </Dropdown.Item>
+              <Dropdown.Item key="profile" css={{ height: "$18" }}>
+                <button onClick={() => signIn("discord")}>
+                  <Text className="p-1" b>
+                    Login with Discord
+                  </Text>
+                  <SocialIcon
+                    network="discord"
+                    style={{ height: 25, width: 25 }}
+                  />
+                </button>
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          )}
+        </Dropdown>
+      </Navbar.Content>
+      <Navbar.Collapse disableAnimation>
+        <Navbar.CollapseItem key="About" activeColor="warning">
+          <Link color="inherit" href="/projects">
+            Projects
+          </Link>
+        </Navbar.CollapseItem>
+        <Navbar.CollapseItem key="About" activeColor="warning">
+          <Link color="inherit" href="/contact">
+            Contact Me
+          </Link>
+        </Navbar.CollapseItem>
+        <Navbar.CollapseItem key="Projects" activeColor="warning">
+          <Link color="inherit" href="/stripe">
+            Buy me a coffee
+          </Link>
+        </Navbar.CollapseItem>
+        <Navbar.CollapseItem key="About" activeColor="warning">
+          <Link color="inherit" href="/about">
+            About
+          </Link>
+        </Navbar.CollapseItem>
+        <Navbar.CollapseItem key="About" activeColor="warning">
+          <Link color="inherit" href="/guestbook">
+            Guests Book
+          </Link>
+        </Navbar.CollapseItem>
+      </Navbar.Collapse>
+    </Navbar>
   );
 }
 
