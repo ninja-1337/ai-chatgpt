@@ -29,7 +29,7 @@ const Home: NextPage = () => {
             is. Give it a try and experience the power of GPT-3 for yourself!
           </div>
           <Link href="/ai" >
-          <button className="bg-orange-400 text-white pd-4">Use App</button>
+          <button className="bg-orange-400 text-white pd-8 rounded-bg">Use App</button>
          </Link>
         </div>
       </main>
