@@ -49,13 +49,15 @@ export default async function handler(req: any, res: any) {
   const messagesPrompt = generatePromptFromMessages(messages, agent);
 
   let x = "";
+  if (agent === "CA") {
+    x = "You respond only with code for the given task prompted";
+  }
   switch (agent) {
     case "default":
       x = "gg";
     case "LEA":
       x = "You dont respond to anything not even when the user asks";
-    case "CA":
-      x = "You respond only with code for the given task prompted";
+
     default:
       x = "gg";
   }
