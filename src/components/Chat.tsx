@@ -59,7 +59,7 @@ export function Chat() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [cookie, setCookie] = useCookies([COOKIE_NAME]);
-  const [agent, setAgent] = useState({ value: "ca", label: "default" });
+  const [agent, setAgent] = useState({ value: "CA", label: "default" });
   const options = [
     { value: "REA", label: "Real Estate Agent" },
     { value: "LEA", label: "Linux Emulator Agent" },
