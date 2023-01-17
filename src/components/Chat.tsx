@@ -59,7 +59,7 @@ export function Chat() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [cookie, setCookie] = useCookies([COOKIE_NAME]);
-  const [agent, setAgent] = useState({ value: "default", label: "default" });
+  const [agent, setAgent] = useState({ value: "ca", label: "default" });
   const options = [
     { value: "REA", label: "Real Estate Agent" },
     { value: "LEA", label: "Linux Emulator Agent" },
@@ -109,12 +109,7 @@ export function Chat() {
   return (
     <>
       {" "}
-      <Select
-        onChange={(x: any) => {
-          setAgent(x);
-        }}
-        options={options}
-      />
+      <Select onChange={() => setAgent((state) => state)} options={options} />
       <div className="rounded-2xl border-zinc-100 lg:border lg:p-6">
         {messages.map(({ message, who }, index) => (
           <>
