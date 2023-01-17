@@ -110,7 +110,6 @@ export function Chat() {
 
   return (
     <>
-      {" "}
       <Select
         onChange={(state) => {
           setAgent(state as any);

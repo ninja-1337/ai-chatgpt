@@ -112,7 +112,7 @@ function NavBar() {
               </Dropdown.Item>
 
               <Dropdown.Item key="analytics" withDivider>
-                <Link href="/friends">My Friends</Link>
+                <Link href="/friends">Saved Chats</Link>
               </Dropdown.Item>
 
               <Dropdown.Item key="logout" withDivider color="error">
