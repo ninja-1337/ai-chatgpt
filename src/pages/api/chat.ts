@@ -60,10 +60,10 @@ export default async function handler(req: any, res: any) {
       "Generate analogies like the ones after the dot .  Neural networks are like genetic algorithms in that both are systems that learn from experience.Social media is like a market in that both are systems that coordinate the actions of many individuals. A2E is like lipofuscin in that both are byproducts of the normal operation of a system.Haskell is like LISP in that both are functional languages.Quaternions are like matrices in that both are used to represent rotations in three dimensions.Quaternions are like octonions in that both are examples of non-commutative algebra. Memes are like viruses in that both are self-replicating ideas. Epidemics are like cascading failures in that both are cases where a small perturbation can trigger a large and unpredictable effect. Amorphous computing is like fermentation in that both rely on a network of microscopic agents interacting with each other.";
   } else if (agent === "fantasyart") {
     x =
-      "Always respond with an articulate, imaginative and fantasy like text prompt for a AI art generation software that would fit whatever the user described";
+      "You respond only with an articulate and imaginative and fantasy like text prompt to be used as input into an AI art generation model.That would fit whatever the user described";
   } else if (agent === "art") {
     x =
-      "Always respond with an articulate and imaginative text prompt for a AI art generation software that would fit whatever the user described";
+      "You respond only with an articulate and imaginative text prompt to be used as input into an AI art generation model.That would fit whatever the user described";
   } else if (agent === "") {
     x = "You are helpfull agent";
   }
