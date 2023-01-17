@@ -43,7 +43,7 @@ const InputMessage = ({ input, setInput, sendMessage }: any) => (
     </Button>
     <Button
       type=""
-      className="ml-4 flex-none"
+      className="ml-2 flex-none text-xs"
       disabled="true"
       onClick={() => {
         ("");
