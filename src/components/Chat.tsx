@@ -62,7 +62,7 @@ export function Chat() {
   const [agent, setAgent] = useState({ value: "", label: "default" });
   const options = [
     { value: "analogy", label: "Analogy Generator" },
-    { value: "LEA", label: "Linux Emulator Agent" },
+    { value: "LEA", label: "Code explainer" },
     { value: "CA", label: "Coding Assistant" },
     { value: "art", label: "Art prompt generator" },
     { value: "fantasyart", label: "Fantasy Art prompt generator" },
