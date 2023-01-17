@@ -59,11 +59,13 @@ export function Chat() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [cookie, setCookie] = useCookies([COOKIE_NAME]);
-  const [agent, setAgent] = useState({ value: "CA", label: "default" });
+  const [agent, setAgent] = useState({ value: "", label: "default" });
   const options = [
-    { value: "REA", label: "Real Estate Agent" },
+    { value: "analogy", label: "Analogy Generator" },
     { value: "LEA", label: "Linux Emulator Agent" },
     { value: "CA", label: "Coding Assistant" },
+    { value: "art", label: "Art prompt generator" },
+    { value: "fantasyart", label: "Fantasy Art prompt generator" },
   ];
   useEffect(() => {
     if (!cookie[COOKIE_NAME]) {
