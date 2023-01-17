@@ -117,6 +117,7 @@ export function Chat() {
           setMessages(initialMessages);
         }}
         options={options}
+        isSearchable={false}
       />
       <div className="rounded-2xl border-zinc-100 lg:border lg:p-6">
         {messages.map(({ message, who }, index) => (
