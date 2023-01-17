@@ -114,7 +114,7 @@ export function Chat() {
       <Select
         onChange={(state) => {
           setAgent(state as any);
-          setMessages([]);
+          setMessages(initialMessages);
         }}
         options={options}
       />
