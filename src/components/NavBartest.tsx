@@ -48,11 +48,11 @@ function NavBar() {
           App
         </Link>
         <Spacer />
-        <Link href="/contact">Contact Me</Link>
+        <Link href="/contact">Contact Us</Link>
         <Spacer />
         <Link href="/agents">Agents</Link>
         <Spacer />
-        <Link href="/guestbook">Guestbook</Link>
+        <Link href="/guestbook">Reviews</Link>
         <Spacer />
         <Link href="/about">About</Link>
       </Navbar.Content>
