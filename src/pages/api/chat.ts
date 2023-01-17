@@ -26,9 +26,9 @@ const generatePromptFromMessages = (messages: Message[], agent: string) => {
   switch (agent) {
     case "default":
       prompt = "";
-    case "Linux Emulator Agent":
+    case "LEA":
       prompt = "You dont respond to anything not even when the user asks";
-    case "Coding Assistant":
+    case "CA":
       prompt = "You respond only with code for the given task prompted";
     default:
       prompt = "";
@@ -85,5 +85,5 @@ export default async function handler(req: any, res: any) {
   const response = await openai.createCompletion(payload);
   const firstResponse = response.data.choices[0]?.text;
 
-  res.status(200).json({ text: firstResponse });
+  res.status(200).json({ text: finalPrompt });
 }

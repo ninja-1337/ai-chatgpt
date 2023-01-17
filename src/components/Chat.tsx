@@ -61,9 +61,9 @@ export function Chat() {
   const [cookie, setCookie] = useCookies([COOKIE_NAME]);
   const [agent, setAgent] = useState({ value: "default", label: "default" });
   const options = [
-    { value: "Real Estate Agent", label: "Real Estate Agent" },
-    { value: "Linux Emulator Agent", label: "Linux Emulator Agent" },
-    { value: "Coding Assistant", label: "Coding Assistant" },
+    { value: "REA", label: "Real Estate Agent" },
+    { value: "LEA", label: "Linux Emulator Agent" },
+    { value: "CA", label: "Coding Assistant" },
   ];
   useEffect(() => {
     if (!cookie[COOKIE_NAME]) {
