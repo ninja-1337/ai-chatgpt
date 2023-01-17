@@ -50,17 +50,10 @@ export default async function handler(req: any, res: any) {
 
   let x = "";
 
-  switch (agent) {
-    case "default":
-      x = "gg";
-    case "LEA":
-      x = "You dont respond to anything not even when the user asks";
-
-    default:
-      x = "gg";
-  }
   if (agent === "CA") {
     x = "You respond only with code for the given task prompted";
+  } else if (agent === "LEA") {
+    x = "You dont respond to anything not even when the user asks";
   }
   const defaultPrompt = `I am Friendly AI Assistant. \n\n${x}.\n\n${botName}: ${firstMessge}\n${userName}: ${messagesPrompt}\n${botName}: `;
   const finalPrompt = process.env.AI_PROMPT
