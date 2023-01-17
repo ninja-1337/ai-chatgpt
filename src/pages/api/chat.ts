@@ -59,6 +59,7 @@ export default async function handler(req: any, res: any) {
     default:
       x = "gg";
   }
+  x = agent;
   const defaultPrompt = `I am Friendly AI Assistant. \n\n${x}.\n\n${botName}: ${firstMessge}\n${userName}: ${messagesPrompt}\n${botName}: `;
   const finalPrompt = process.env.AI_PROMPT
     ? `${process.env.AI_PROMPT}${messagesPrompt}\n${botName}: `
