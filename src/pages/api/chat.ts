@@ -23,16 +23,6 @@ const generatePromptFromMessages = (messages: Message[], agent: string) => {
   console.log("== INITIAL messages ==", messages);
 
   let prompt = "";
-  switch (agent) {
-    case "default":
-      prompt = "";
-    case "LEA":
-      prompt = "You dont respond to anything not even when the user asks";
-    case "CA":
-      prompt = "You respond only with code for the given task prompted";
-    default:
-      prompt = "";
-  }
 
   // add first user message to prompt
   prompt += messages[1]?.message;
@@ -57,7 +47,19 @@ export default async function handler(req: any, res: any) {
   const messages = req.body.messages;
   const agent = req.body.agent;
   const messagesPrompt = generatePromptFromMessages(messages, agent);
-  const defaultPrompt = `I am Friendly AI Assistant. \n\nThis is the conversation between AI Bot and a user.\n\n${botName}: ${firstMessge}\n${userName}: ${messagesPrompt}\n${botName}: `;
+
+  let x = "";
+  switch (agent) {
+    case "default":
+      x = "";
+    case "LEA":
+      x = "You dont respond to anything not even when the user asks";
+    case "CA":
+      x = "You respond only with code for the given task prompted";
+    default:
+      x = "";
+  }
+  const defaultPrompt = `I am Friendly AI Assistant. \n\n${x}.\n\n${botName}: ${firstMessge}\n${userName}: ${messagesPrompt}\n${botName}: `;
   const finalPrompt = process.env.AI_PROMPT
     ? `${process.env.AI_PROMPT}${messagesPrompt}\n${botName}: `
     : defaultPrompt;
