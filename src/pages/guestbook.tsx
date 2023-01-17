@@ -26,11 +26,11 @@ const Home: NextPage = () => {
       </Head>
       <main className="container mx-auto flex min-h-fit flex-col items-center justify-center p-2">
         <h1 className="text-5xl font-extrabold leading-normal text-gray-700 md:text-[5rem]">
-          <span className="text-orange-300">GuestBook</span>
+          <span className="text-orange-300">Reviews</span>
         </h1>
         <p className="mb-4 text-gray-600 dark:text-gray-400">
           Leave a comment below. It could be anything – appreciation,
-          information, wisdom, or even humor. Surprise me!
+          information, wisdom, or even humor. Surprise us!
         </p>
 
         {!session && (

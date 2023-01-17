@@ -26,9 +26,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="flex flex-col items-center justify-center">
-        <p className="text-2xl text-blue-300">
-          Your messages are private and are only shown to me
-        </p>
+        <p className="text-2xl text-blue-300">Your messages are private</p>
         {!session && (
           // eslint-disable-next-line @next/next/no-html-link-for-pages
           <>
@@ -84,7 +82,7 @@ const Home: NextPage = () => {
                 id="body"
                 name="body"
                 required
-                className="mt-1 block h-30v w-3/5 w-full min-w-fit  rounded-md border-gray-300 bg-white py-2 pl-4  text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-500 dark:text-gray-100"
+                className="h-30v mt-1 block w-3/5 w-full min-w-fit  rounded-md border-gray-300 bg-white py-2 pl-4  text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-500 dark:text-gray-100"
               />
               <button
                 className="w-1/6 items-center justify-center rounded p-3 align-middle hover:bg-orange-400"
