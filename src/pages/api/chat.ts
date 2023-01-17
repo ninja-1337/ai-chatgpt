@@ -19,10 +19,20 @@ const firstMessge = initialMessages[0]?.message;
 const openai = new OpenAIApi(configuration);
 
 // @TODO: unit test this. good case for unit testing
-const generatePromptFromMessages = (messages: Message[]) => {
+const generatePromptFromMessages = (messages: Message[], agent: string) => {
   console.log("== INITIAL messages ==", messages);
 
   let prompt = "";
+  switch (agent) {
+    case "default":
+      prompt = "";
+    case "Linux Emulator Agent":
+      prompt = "You dont respond to anything not even when the user asks";
+    case "Coding Assistant":
+      prompt = "You respond only with code for the given task prompted";
+    default:
+      return "";
+  }
 
   // add first user message to prompt
   prompt += messages[1]?.message;
@@ -45,7 +55,8 @@ const generatePromptFromMessages = (messages: Message[]) => {
 
 export default async function handler(req: any, res: any) {
   const messages = req.body.messages;
-  const messagesPrompt = generatePromptFromMessages(messages);
+  const agent = req.body.agent;
+  const messagesPrompt = generatePromptFromMessages(messages, agent);
   const defaultPrompt = `I am Friendly AI Assistant. \n\nThis is the conversation between AI Bot and a user.\n\n${botName}: ${firstMessge}\n${userName}: ${messagesPrompt}\n${botName}: `;
   const finalPrompt = process.env.AI_PROMPT
     ? `${process.env.AI_PROMPT}${messagesPrompt}\n${botName}: `
