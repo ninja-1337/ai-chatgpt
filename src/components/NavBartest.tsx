@@ -34,7 +34,7 @@ function NavBar() {
       >
         <Link href="/">
           <Text b color="inherit" hideIn="xs">
-            Folio
+            Verbal Agent
           </Text>
         </Link>
       </Navbar.Brand>
