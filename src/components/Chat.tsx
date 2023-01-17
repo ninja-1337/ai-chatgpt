@@ -109,7 +109,7 @@ export function Chat() {
   return (
     <>
       {" "}
-      <Select onChange={() => setAgent((state) => state)} options={options} />
+      <Select onChange={(state) => setAgent(state as any)} options={options} />
       <div className="rounded-2xl border-zinc-100 lg:border lg:p-6">
         {messages.map(({ message, who }, index) => (
           <>
