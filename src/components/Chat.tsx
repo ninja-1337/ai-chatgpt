@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Button } from "./Button";
 import { type Message, ChatLine, LoadingChatLine } from "./ChatLine";
 import { useCookies } from "react-cookie";
-
+import Select from "react-select";
 const COOKIE_NAME = "nextjs-example-ai-chat-gpt3";
 
 // default first message to display in UI (not necessary to define the prompt)
@@ -44,9 +44,9 @@ const InputMessage = ({ input, setInput, sendMessage }: any) => (
     <Button
       type=""
       className="ml-4 flex-none"
+      disabled="true"
       onClick={() => {
-        sendMessage(input);
-        setInput("");
+        ("");
       }}
     >
       Share-Chat
@@ -59,7 +59,12 @@ export function Chat() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [cookie, setCookie] = useCookies([COOKIE_NAME]);
-
+  const [agent, setAgent] = useState({ value: "default", label: "default" });
+  const options = [
+    { value: "Real Estate Agent", label: "Real Estate Agent" },
+    { value: "Linux Emulator Agent", label: "Linux Emulator Agent" },
+    { value: "Coding Assistant", label: "Coding Assistant" },
+  ];
   useEffect(() => {
     if (!cookie[COOKIE_NAME]) {
       // generate a semi random short id
@@ -86,6 +91,7 @@ export function Chat() {
       body: JSON.stringify({
         messages: last10mesages,
         user: cookie[COOKIE_NAME],
+        agent: agent.value,
       }),
     });
     const data = await response.json();
@@ -101,25 +107,34 @@ export function Chat() {
   };
 
   return (
-    <div className="rounded-2xl border-zinc-100 lg:border lg:p-6">
-      {messages.map(({ message, who }, index) => (
-        <>
-          <ChatLine key={index} who={who} message={message} />
-        </>
-      ))}
-
-      {loading && <LoadingChatLine />}
-
-      {messages.length < 2 && (
-        <span className="clear-both mx-auto flex flex-grow text-gray-600">
-          Type a message to start the conversation
-        </span>
-      )}
-      <InputMessage
-        input={input}
-        setInput={setInput}
-        sendMessage={sendMessage}
+    <>
+      {" "}
+      <Select
+        onChange={(x: any) => {
+          setAgent(x);
+        }}
+        options={options}
       />
-    </div>
+      <div className="rounded-2xl border-zinc-100 lg:border lg:p-6">
+        {messages.map(({ message, who }, index) => (
+          <>
+            <ChatLine key={index} who={who} message={message} />
+          </>
+        ))}
+
+        {loading && <LoadingChatLine />}
+
+        {messages.length < 2 && (
+          <span className="clear-both mx-auto flex flex-grow text-gray-600">
+            Type a message to start the conversation
+          </span>
+        )}
+        <InputMessage
+          input={input}
+          setInput={setInput}
+          sendMessage={sendMessage}
+        />
+      </div>
+    </>
   );
 }

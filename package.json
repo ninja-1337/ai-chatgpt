@@ -29,6 +29,7 @@
     "react-cookie": "^4.1.1",
     "react-dom": "18.2.0",
     "react-modal-hover": "^1.1.13",
+    "react-select": "^5.7.0",
     "react-social-icons": "^5.15.0",
     "react-wrap-balancer": "^0.2.4",
     "superjson": "1.9.1",
