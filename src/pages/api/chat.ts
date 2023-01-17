@@ -31,7 +31,7 @@ const generatePromptFromMessages = (messages: Message[], agent: string) => {
     case "Coding Assistant":
       prompt = "You respond only with code for the given task prompted";
     default:
-      return "";
+      prompt = "";
   }
 
   // add first user message to prompt
