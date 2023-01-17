@@ -83,5 +83,5 @@ export default async function handler(req: any, res: any) {
   const response = await openai.createCompletion(payload);
   const firstResponse = response.data.choices[0]?.text;
 
-  res.status(200).json({ text: finalPrompt });
+  res.status(200).json({ text: response });
 }
