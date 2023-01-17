@@ -58,7 +58,7 @@ model User {
   sessions      Session[]
   guestbook     guestbook[] @relation("guest")
   messages      message[]   @relation("post")
-  aimessages      aimessage[]   @relation("ai")
+  aichat      aichat[]   @relation("ai")
 }
 
 model VerificationToken {
@@ -88,10 +88,18 @@ model message {
   updated_at DateTime @default(now())
   sent_by    User     @relation("post", fields: [userId], references: [id])
 }
-model aimessage {
+
+model chatline {
   id         String   @id @default(cuid())
-  name      String
-  prompt       String
+  who      String
+  message      String  
+  userId String
+  sent_by    aichat     @relation("gg", fields: [userId], references: [id])
+}
+
+model aichat {
+  id         String   @id @default(cuid())
+  chat       chatline[] @relation("gg")
   userId     String
   sent_by    User     @relation("ai", fields: [userId], references: [id])
 }
