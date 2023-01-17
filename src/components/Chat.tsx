@@ -14,7 +14,7 @@ export const initialMessages: Message[] = [
 ];
 
 const InputMessage = ({ input, setInput, sendMessage }: any) => (
-  <div className="clear-both mt-6 flex">
+  <div className="clear-both mt-6 flex w-11/12">
     <input
       type="text"
       aria-label="chat input"
