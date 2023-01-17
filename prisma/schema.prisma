@@ -58,6 +58,7 @@ model User {
   sessions      Session[]
   guestbook     guestbook[] @relation("guest")
   messages      message[]   @relation("post")
+  aimessages      aimessage[]   @relation("ai")
 }
 
 model VerificationToken {
@@ -86,4 +87,17 @@ model message {
   created_at DateTime @default(now())
   updated_at DateTime @default(now())
   sent_by    User     @relation("post", fields: [userId], references: [id])
+}
+model aimessage {
+  id         String   @id @default(cuid())
+  name      String
+  prompt       String
+  userId     String
+  sent_by    User     @relation("ai", fields: [userId], references: [id])
+}
+model agents {
+  id         String   @id @default(cuid())
+  name      String
+  prompt       String
+  userId     String
 }
