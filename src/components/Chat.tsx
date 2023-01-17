@@ -128,7 +128,7 @@ export function Chat() {
         {loading && <LoadingChatLine />}
 
         {messages.length < 2 && (
-          <span className="clear-both mx-auto flex flex-grow text-gray-600">
+          <span className="clear-both mx-4 flex  text-gray-600">
             Type a message to start the conversation
           </span>
         )}
