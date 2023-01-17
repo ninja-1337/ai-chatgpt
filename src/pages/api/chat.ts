@@ -45,7 +45,7 @@ const generatePromptFromMessages = (messages: Message[], agent: string) => {
 
 export default async function handler(req: any, res: any) {
   const messages = req.body.messages;
-  const agent = req.body.agent;
+  const agent: string = req.body.agent;
   const messagesPrompt = generatePromptFromMessages(messages, agent);
 
   let x = "";
@@ -59,7 +59,7 @@ export default async function handler(req: any, res: any) {
     default:
       x = "gg";
   }
-  x = agent;
+
   const defaultPrompt = `I am Friendly AI Assistant. \n\n${x}.\n\n${botName}: ${firstMessge}\n${userName}: ${messagesPrompt}\n${botName}: `;
   const finalPrompt = process.env.AI_PROMPT
     ? `${process.env.AI_PROMPT}${messagesPrompt}\n${botName}: `
