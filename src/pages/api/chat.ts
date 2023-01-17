@@ -49,9 +49,7 @@ export default async function handler(req: any, res: any) {
   const messagesPrompt = generatePromptFromMessages(messages, agent);
 
   let x = "";
-  if (agent === "CA") {
-    x = "You respond only with code for the given task prompted";
-  }
+
   switch (agent) {
     case "default":
       x = "gg";
@@ -61,7 +59,9 @@ export default async function handler(req: any, res: any) {
     default:
       x = "gg";
   }
-
+  if (agent === "CA") {
+    x = "You respond only with code for the given task prompted";
+  }
   const defaultPrompt = `I am Friendly AI Assistant. \n\n${x}.\n\n${botName}: ${firstMessge}\n${userName}: ${messagesPrompt}\n${botName}: `;
   const finalPrompt = process.env.AI_PROMPT
     ? `${process.env.AI_PROMPT}${messagesPrompt}\n${botName}: `
