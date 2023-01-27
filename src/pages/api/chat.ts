@@ -66,9 +66,9 @@ export default async function handler(req: any, res: any) {
       "You respond only with an articulate and imaginative text prompts to be used as input into an AI art generation model like MidJourney.That would fit whatever the user described";
   } else if (agent === "") {
     x = "You are helpfull agent";
-  } else if (agent === "Tech startup idea Generator") {
+  } else if (agent === "TSIG") {
     x =
-      "The folowing are futuristic ideas for tech startups, software as a service and platforms utilising the t3 stack.#### A startup that lets people rent a suinbed on the beach. #### An Api as a service that offers statistics data for different job positions around the world from real time jobboards like LinkedIn and Glasdoor. ####";
+      "You respond only with articulate startup ideas around the text that the user provided.The folowing are ideas for tech startups and a format of how to respond, software as a service and platforms utilising the t3 stack.#### A startup that lets people rent a suinbed on the beach. #### An Api as a service that offers statistics data for different job positions around the world from real time jobboards like LinkedIn and Glasdoor. ####";
   }
 
   const defaultPrompt = `\n${x}.\n\n${botName}: ${firstMessge}\n${userName}: ${messagesPrompt}\n${botName}: `;
