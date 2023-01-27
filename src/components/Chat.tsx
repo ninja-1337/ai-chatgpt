@@ -66,6 +66,7 @@ export function Chat() {
     { value: "CA", label: "Coding Assistant" },
     { value: "art", label: "Art prompt generator" },
     { value: "fantasyart", label: "Fantasy Art prompt generator" },
+    { value: "TSIG", label: "Tech startup idea generator" },
   ];
   useEffect(() => {
     if (!cookie[COOKIE_NAME]) {
