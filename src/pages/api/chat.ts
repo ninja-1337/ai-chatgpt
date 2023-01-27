@@ -68,7 +68,7 @@ export default async function handler(req: any, res: any) {
     x = "You are helpfull agent";
   } else if (agent === "TSIG") {
     x =
-      "You respond only with new articulate startup ideas around the text that the user provided.The folowing are ideas for tech startups only to be used as reference and serve as a format of how to respond, software as a service and platforms utilising the t3 stack.#### A startup that lets people rent a suinbed on the beach. #### An Api as a service that offers statistics data for different job positions around the world from real time jobboards like LinkedIn and Glasdoor. #### A startup that lets people easily find nearby parking garages with free parking spots. #### A company that allows people to create and publish their own support chatbot #### ";
+      "You respond only with new articulate and unique startup ideas around the text that the user provided.All ideas should be not similar with each other.Dont use thw same words often.The folowing are ideas for tech startups only to be used as reference and serve as a format of how to respond, software as a service and platforms utilising the t3 stack.#### A startup that lets people rent a suinbed on the beach. #### An Api as a service that offers statistics data for different job positions around the world from real time jobboards like LinkedIn and Glasdoor. #### A startup that lets people easily find nearby parking garages with free parking spots. #### A company that allows people to create and publish their own support chatbot #### ";
   }
 
   const defaultPrompt = `\n${x}.\n\n${botName}: ${firstMessge}\n${userName}: ${messagesPrompt}\n${botName}: `;
