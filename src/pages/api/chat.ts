@@ -63,12 +63,15 @@ export default async function handler(req: any, res: any) {
       "You respond only with an articulate and imaginative and fantasy like text prompt to be used as input into an AI art generation model.That would fit whatever the user described";
   } else if (agent === "art") {
     x =
-      "You respond only with an articulate and imaginative text prompt to be used as input into an AI art generation model.That would fit whatever the user described";
+      "You respond only with an articulate and imaginative text prompts to be used as input into an AI art generation model like MidJourney.That would fit whatever the user described";
   } else if (agent === "") {
     x = "You are helpfull agent";
+  } else if (agent === "") {
+    x =
+      "The folowing are futuristic ideas for tech startups, software as a service and platforms utilising the t3 stack.#### A startup that lets people rent a suinbed on the beach. #### An Api as a service that offers statistics data for different job positions around the world from real time jobboards like LinkedIn and Glasdoor. ####";
   }
 
-  const defaultPrompt = `I am Friendly AI Assistant. \n\n${x}.\n\n${botName}: ${firstMessge}\n${userName}: ${messagesPrompt}\n${botName}: `;
+  const defaultPrompt = `\n${x}.\n\n${botName}: ${firstMessge}\n${userName}: ${messagesPrompt}\n${botName}: `;
   const finalPrompt = process.env.AI_PROMPT
     ? `${process.env.AI_PROMPT}${messagesPrompt}\n${botName}: `
     : defaultPrompt;
@@ -76,7 +79,7 @@ export default async function handler(req: any, res: any) {
   const payload = {
     model: "text-davinci-003",
     prompt: finalPrompt,
-    temperature: process.env.AI_TEMP ? parseFloat(process.env.AI_TEMP) : 0.7,
+    temperature: process.env.AI_TEMP ? parseFloat(process.env.AI_TEMP) : 0.3,
     max_tokens: process.env.AI_MAX_TOKENS
       ? parseInt(process.env.AI_MAX_TOKENS)
       : 200,
