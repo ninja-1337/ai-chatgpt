@@ -20,7 +20,7 @@ const Home: NextPage = () => {
           <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
             Verbal <span className="text-[hsl(280,100%,70%)]">Agent</span> App
           </h1>
-          <div className="text-lg text-2xl font-bold text-white">
+          <div className="text-2xl text-2xl font-bold text-white">
             Verbal Agent uses GPT-3 technology to generate human-like text for a
             variety of tasks. With this app, you can create your own personal
             agent to handle summarization, translation, and more. Simply enter
