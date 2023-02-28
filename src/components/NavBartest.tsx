@@ -50,8 +50,6 @@ function NavBar() {
         <Spacer />
         <Link href="/contact">Contact Us</Link>
         <Spacer />
-        <Link href="/agents">Agents</Link>
-        <Spacer />
         <Link href="/guestbook">Reviews</Link>
         <Spacer />
         <Link href="/about">About</Link>
@@ -165,7 +163,7 @@ function NavBar() {
         </Navbar.CollapseItem>
         <Navbar.CollapseItem key="Projects" activeColor="warning">
           <Link color="inherit" href="/stripe">
-            Buy me a coffee
+            Donate
           </Link>
         </Navbar.CollapseItem>
         <Navbar.CollapseItem key="About" activeColor="warning">
