@@ -154,13 +154,13 @@ function NavBar() {
       </Navbar.Content>
       <Navbar.Collapse disableAnimation>
         <Navbar.CollapseItem key="About" activeColor="warning">
-          <Link color="inherit" href="/projects">
-            Projects
+          <Link color="inherit" href="/ai">
+            App
           </Link>
         </Navbar.CollapseItem>
         <Navbar.CollapseItem key="About" activeColor="warning">
           <Link color="inherit" href="/contact">
-            Contact Me
+            Contact Us
           </Link>
         </Navbar.CollapseItem>
         <Navbar.CollapseItem key="Projects" activeColor="warning">
