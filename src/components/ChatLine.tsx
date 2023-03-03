@@ -86,7 +86,7 @@ export function ChatLine({ who = "bot", message }: Message) {
                   who == "bot" ? "text-white-400" : "text-white-400"
                 )}
               >
-                {formatteMessage}
+                <pre>{formatteMessage}</pre>
               </p>
             </div>
           </div>
