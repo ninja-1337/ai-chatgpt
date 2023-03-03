@@ -100,7 +100,7 @@ export function Chat() {
     const data = await response.json();
 
     // strip out white spaces from the bot message
-    const botNewMessage = data.text.trim();
+    const botNewMessage = data.text;
 
     setMessages([
       ...newMessages,
