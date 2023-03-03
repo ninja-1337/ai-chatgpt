@@ -35,10 +35,10 @@ export const LoadingChatLine = () => (
 // util helper to convert new lines to <br /> tags
 const convertNewLines = (text: string) =>
   text.split("\n").map((line, i) => (
-    <span key={i}>
+    <pre key={i}>
       {line}
       <br />
-    </span>
+    </pre>
   ));
 
 const copyContent = async (text: string) => {
@@ -80,15 +80,14 @@ export function ChatLine({ who = "bot", message }: Message) {
                   {who == "bot" ? "AI" : "You"}
                 </a>
               </p>
-
-              <pre
+              <p
                 className={clsx(
                   "text ",
                   who == "bot" ? "text-white-400" : "text-white-400"
                 )}
               >
                 {formatteMessage}
-              </pre>
+              </p>
             </div>
           </div>
           <div className=" flex flex-row">
