@@ -67,9 +67,9 @@ export function ChatLine({ who = "bot", message }: Message) {
             "text ",
             who == "bot"
               ? "font- float-right mb-5 rounded-xl bg-zinc-400 px-4 py-5 font-semibold shadow-xl ring-1 ring-zinc-100 sm:px-6"
-              : "text-white-400 bg-orange-300",
+              : "text-white-400 bg-gradient-to-r from-orange-500 ",
             who == "user"
-              ? "font- float-right mb-5 rounded-xl bg-cyan-200 px-4 py-5 font-semibold shadow-lg ring-1 ring-zinc-100 sm:px-6"
+              ? "font- float-right mb-5 rounded-xl  bg-gradient-to-r from-cyan-400 px-4 py-5 font-semibold shadow-lg ring-1 ring-zinc-100 sm:px-6"
               : "text-white-400 bg-orange-300"
           )}
         >
@@ -86,7 +86,7 @@ export function ChatLine({ who = "bot", message }: Message) {
                   who == "bot" ? "font- font-semibold" : "text-white-400"
                 )}
               >
-                {message}
+                {formatteMessage}
               </p>
             </div>
           </div>
