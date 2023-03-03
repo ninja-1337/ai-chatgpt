@@ -101,7 +101,7 @@ export function Chat() {
 
     // strip out white spaces from the bot message
     const botNewMessage = data.text;
-
+    console.log(botNewMessage);
     setMessages([
       ...newMessages,
       { message: botNewMessage, who: "bot" } as Message,
