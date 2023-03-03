@@ -86,7 +86,7 @@ export function ChatLine({ who = "bot", message }: Message) {
                   who == "bot" ? "font- font-semibold" : "text-white-400"
                 )}
               >
-                <textarea>{formatteMessage}</textarea>
+                {message}
               </p>
             </div>
           </div>
