@@ -36,10 +36,8 @@ export const LoadingChatLine = () => (
 const convertNewLines = (text: string) =>
   text.split("\n").map((line, i) => (
     <span style={{ whiteSpace: "pre-wrap" }} key={i}>
-      <>
-        {line}
-        <br />
-      </>
+      {line}
+      <br />
     </span>
   ));
 
