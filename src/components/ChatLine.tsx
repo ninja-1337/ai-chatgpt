@@ -36,8 +36,10 @@ export const LoadingChatLine = () => (
 const convertNewLines = (text: string) =>
   text.split("\n").map((line, i) => (
     <span key={i}>
-      <pre>{line}</pre>
-      <br />
+      <>
+        <pre>{line}</pre>
+        <br />
+      </>
     </span>
   ));
 
