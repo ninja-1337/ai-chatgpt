@@ -38,7 +38,7 @@ const convertNewLines = (text: string) =>
     <span key={i}>
       <>
         <code>
-          <pre className="pl-6">{line}</pre>
+          <pre>{line}</pre>
         </code>
         <br />
       </>
