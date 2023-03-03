@@ -17,7 +17,7 @@ const Home: NextPage = () => {
       </Head>
       <main className="container mx-auto flex min-h-fit flex-col items-center justify-center p-2">
         <h1 className="text-3xl font-extrabold leading-normal text-gray-700 md:text-[5rem]">
-          <span className="text-black-300">My Friends</span>
+          <span className="text-black-300">Saved Chats</span>
         </h1>
       </main>
     </>
