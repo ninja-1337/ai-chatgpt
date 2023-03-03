@@ -66,8 +66,8 @@ export function ChatLine({ who = "bot", message }: Message) {
           className={clsx(
             "text ",
             who == "bot"
-              ? "font- float-right mb-5 rounded-xl from-orange-500 to-yellow-100  px-4 py-5 font-semibold shadow-xl ring-1 ring-zinc-100 sm:px-6"
-              : "text-white-400 bg-gradient-to-r from-orange-500 to-yellow-100 ",
+              ? "  float-right mb-5  rounded-xl px-4 py-5 font-semibold shadow-xl ring-1 sm:px-6"
+              : "text-white-400   ",
             who == "user"
               ? "font- float-right mb-5 rounded-xl  from-cyan-400 to-blue-100 px-4 py-5 font-semibold shadow-lg ring-1 ring-zinc-100 sm:px-6"
               : "font- float-right mb-5 rounded-xl  from-cyan-400 to-blue-100 px-4 py-5 font-semibold shadow-lg ring-1 ring-zinc-100 sm:px-6"
