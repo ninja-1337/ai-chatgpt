@@ -37,7 +37,9 @@ const convertNewLines = (text: string) =>
   text.split("\n").map((line, i) => (
     <span key={i}>
       <>
-        <code>{line}</code>
+        <code>
+          <pre>{line}</pre>
+        </code>
         <br />
       </>
     </span>
