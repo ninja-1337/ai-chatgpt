@@ -35,10 +35,10 @@ export const LoadingChatLine = () => (
 // util helper to convert new lines to <br /> tags
 const convertNewLines = (text: string) =>
   text.split("\n").map((line, i) => (
-    <pre key={i}>
+    <span key={i}>
       {line}
       <br />
-    </pre>
+    </span>
   ));
 
 const copyContent = async (text: string) => {
