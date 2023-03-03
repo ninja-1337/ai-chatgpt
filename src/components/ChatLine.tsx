@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import Balancer from "react-wrap-balancer";
 import { Button } from "./Button";
-
+import React, { useState } from "react";
 // wrap Balancer to remove type errors :( - @TODO - fix this ugly hack
 const BalancerWrapper = (props: any) => <Balancer {...props} />;
 
@@ -86,7 +86,7 @@ export function ChatLine({ who = "bot", message }: Message) {
                   who == "bot" ? "font- font-semibold" : "text-white-400"
                 )}
               >
-                {formatteMessage}
+                <textarea>{formatteMessage}</textarea>
               </p>
             </div>
           </div>
