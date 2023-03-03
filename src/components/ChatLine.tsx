@@ -35,7 +35,7 @@ export const LoadingChatLine = () => (
 // util helper to convert new lines to <br /> tags
 const convertNewLines = (text: string) =>
   text.split("\n").map((line, i) => (
-    <span style={{ whiteSpace: "pre" }} key={i}>
+    <span style={{ whiteSpace: "pre-wrap" }} key={i}>
       <>
         {line}
         <br />
