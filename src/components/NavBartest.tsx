@@ -110,7 +110,7 @@ function NavBar() {
               </Dropdown.Item>
 
               <Dropdown.Item key="analytics" withDivider>
-                <Link href="/friends">Saved Chats</Link>
+                <Link href="/chats">Saved Chats</Link>
               </Dropdown.Item>
 
               <Dropdown.Item key="logout" withDivider color="error">
@@ -163,7 +163,7 @@ function NavBar() {
         </Navbar.CollapseItem>
         <Navbar.CollapseItem key="Projects" activeColor="warning">
           <Link color="inherit" href="/stripe">
-            Donate
+            Saved Chats
           </Link>
         </Navbar.CollapseItem>
         <Navbar.CollapseItem key="About" activeColor="warning">
@@ -173,7 +173,7 @@ function NavBar() {
         </Navbar.CollapseItem>
         <Navbar.CollapseItem key="About" activeColor="warning">
           <Link color="inherit" href="/guestbook">
-            Guests Book
+            Reviews
           </Link>
         </Navbar.CollapseItem>
       </Navbar.Collapse>
