@@ -80,21 +80,15 @@ export function ChatLine({ who = "bot", message }: Message) {
                   {who == "bot" ? "AI" : "You"}
                 </a>
               </p>
-              <p
+
+              <pre
                 className={clsx(
                   "text ",
                   who == "bot" ? "text-white-400" : "text-white-400"
                 )}
               >
-                <pre
-                  className={clsx(
-                    "text ",
-                    who == "bot" ? "text-white-400" : "text-white-400"
-                  )}
-                >
-                  {formatteMessage}
-                </pre>
-              </p>
+                {formatteMessage}
+              </pre>
             </div>
           </div>
           <div className=" flex flex-row">
