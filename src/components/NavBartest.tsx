@@ -162,7 +162,7 @@ function NavBar() {
           </Link>
         </Navbar.CollapseItem>
         <Navbar.CollapseItem key="Projects" activeColor="warning">
-          <Link color="inherit" href="/stripe">
+          <Link color="inherit" href="/chats">
             Saved Chats
           </Link>
         </Navbar.CollapseItem>
