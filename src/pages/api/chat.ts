@@ -77,7 +77,7 @@ export default async function handler(req: any, res: any) {
     : defaultPrompt;
 
   const payload = {
-    model: "gpt-3.5-turbo",
+    model: "text-davinci-003",
     prompt: finalPrompt,
     temperature: process.env.AI_TEMP ? parseFloat(process.env.AI_TEMP) : 0.7,
     max_tokens: process.env.AI_MAX_TOKENS
