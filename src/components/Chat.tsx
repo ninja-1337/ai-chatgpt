@@ -110,7 +110,7 @@ export function Chat() {
   };
 
   return (
-    <>
+    <div>
       <Select
         onChange={(state) => {
           setAgent(state as any);
@@ -139,6 +139,6 @@ export function Chat() {
           sendMessage={sendMessage}
         />
       </div>
-    </>
+    </div>
   );
 }
