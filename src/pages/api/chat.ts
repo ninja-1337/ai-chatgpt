@@ -14,7 +14,12 @@ const configuration = new Configuration({
 
 const botName = "AI";
 const userName = "User"; // TODO: move to ENV var
-const firstMessge = initialMessages[0]?.message;
+const firstMessge = [
+  {
+    who: "bot",
+    message: "Hi! I’m an A.I. assistant. Ask me anything!",
+  },
+];
 
 const openai = new OpenAIApi(configuration);
 
