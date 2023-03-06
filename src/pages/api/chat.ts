@@ -45,7 +45,7 @@ const generatePromptFromMessages = (messages: Message[]) => {
 
 export default async function handler(req: any, res: any) {
   const messages = req.body.messages;
-  const agnt: any = req.body.agent;
+  const agnt = req.body.agent;
   const messagesPrompt = generatePromptFromMessages(messages);
 
   const agent = trpc.auth.getAgentFromID.useMutation(agnt);
