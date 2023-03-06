@@ -64,19 +64,11 @@ export function Chat() {
   const [agent, setAgent] = useState({ value: "", label: "default" });
 
   const agents = trpc.auth.getAgents.useQuery();
-  const options = [
-    { value: "clexc7czm0008u17ocdxk8eve", label: "Analogy Generator" },
-    { value: "clexc6h020006u17o94y1j9sm", label: "Code explainer" },
-    { value: "clexazj5h0000u17ohbkzjmyn", label: "Coding Assistant" },
-    {
-      value: "clexc4kxz0004u17o9xorddkt",
-      label: "Fantasy Art prompt generator",
-    },
-    {
-      value: "clexc16n10002u17ojbdvkcb3",
-      label: "Tech startup idea generator",
-    },
-  ];
+  let options: {
+    value: string;
+    label: string;
+  }[];
+
   agents.data?.forEach(function (agent) {
     options.push({ value: agent.id, label: agent.name });
   });
