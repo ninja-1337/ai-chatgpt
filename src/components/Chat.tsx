@@ -129,7 +129,7 @@ export function Chat() {
           setAgent(state as any);
           setMessages(initialMessages);
         }}
-        options={agents.data}
+        options={options}
         isSearchable={false}
       />
       <div className="rounded-2xl border-zinc-100 lg:border lg:p-6">
