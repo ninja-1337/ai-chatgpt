@@ -61,7 +61,7 @@ export function Chat() {
   const [cookie, setCookie] = useCookies([COOKIE_NAME]);
   const [agent, setAgent] = useState({ value: "", label: "default" });
   const options = [
-    { value: "clexazj5h0000u17ohbkzjmyn", label: "Analogy Generator" },
+    { value: "clexc7czm0008u17ocdxk8eve", label: "Analogy Generator" },
     { value: "clexc6h020006u17o94y1j9sm", label: "Code explainer" },
     { value: "clexazj5h0000u17ohbkzjmyn", label: "Coding Assistant" },
     {
