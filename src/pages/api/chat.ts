@@ -62,7 +62,6 @@ export default async function handler(req: any, res: any) {
   });
 
   const Prmpt = agent;
-  console.log(Prmpt);
 
   // if (agent === "CA") {
   //   x = "You respond only with code for the given task prompted";
@@ -89,6 +88,7 @@ export default async function handler(req: any, res: any) {
   const finalPrompt = process.env.AI_PROMPT
     ? `${process.env.AI_PROMPT}${messagesPrompt}\n${botName}: `
     : defaultPrompt;
+  console.log(finalPrompt);
 
   const payload = {
     model: "text-davinci-003",
