@@ -89,7 +89,7 @@ export default async function handler(req: any, res: any) {
 
   const payload = {
     model: "text-davinci-003",
-    prompt: finalPrompt,
+    prompt: defaultPrompt,
     temperature: process.env.AI_TEMP ? parseFloat(process.env.AI_TEMP) : 0.7,
     max_tokens: process.env.AI_MAX_TOKENS
       ? parseInt(process.env.AI_MAX_TOKENS)
