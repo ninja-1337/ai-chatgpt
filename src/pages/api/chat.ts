@@ -51,7 +51,7 @@ export default async function handler(req: any, res: any) {
   const agent = trpc.auth.getAgentFromID.useMutation(agnt);
 
   const Prmpt = agent.data?.prompt;
-
+  res.status(200).json({ text: Prmpt });
   // if (agent === "CA") {
   //   x = "You respond only with code for the given task prompted";
   // } else if (agent === "LEA") {
