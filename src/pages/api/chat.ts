@@ -34,7 +34,6 @@ const generatePromptFromMessages = (messages: Message[]) => {
 
   // remove first conversaiton (first 2 messages)
   const messagesWithoutFirstConvo = messages.slice(2);
-  console.log(" == messagesWithoutFirstConvo", messagesWithoutFirstConvo);
 
   // early return if no messages
   if (messagesWithoutFirstConvo.length == 0) {
@@ -55,7 +54,7 @@ export default async function handler(req: any, res: any) {
 
   const agent = prisma.agents.findUnique({
     where: {
-      id: agnt.text,
+      id: agnt.toString(),
     },
     select: {
       prompt: true,
@@ -63,7 +62,8 @@ export default async function handler(req: any, res: any) {
   });
 
   const Prmpt = agent;
-  res.status(200).json([Prmpt]);
+  console.log(Prmpt);
+
   // if (agent === "CA") {
   //   x = "You respond only with code for the given task prompted";
   // } else if (agent === "LEA") {
