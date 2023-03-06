@@ -1,8 +1,8 @@
 import { Configuration, OpenAIApi } from "openai";
 import { prisma } from "../../server/db/client";
-import { initialMessages } from "../../components/Chat";
+import { initialMessages, Chat } from "../../components/Chat";
 import { type Message } from "../../components/ChatLine";
-import { trpc } from "../../utils/trpc";
+
 // break the app if the API key is missing
 if (!process.env.OPENAI_API_KEY) {
   throw new Error("Missing Environment Variable OPENAI_API_KEY");
@@ -51,15 +51,18 @@ const generatePromptFromMessages = (messages: Message[]) => {
 export default async function handler(req: any, res: any) {
   const messages = req.body.messages;
   const agnt = req.body.agent;
-  const messagesPrompt = messages;
+  const messagesPrompt = generatePromptFromMessages(messages);
 
-  const agent: any = prisma.agents.findUnique({
+  const agent = prisma.agents.findUnique({
     where: {
       id: agnt.text,
     },
+    select: {
+      prompt: true,
+    },
   });
 
-  const Prmpt = agent.prompt;
+  const Prmpt = agent;
 
   // if (agent === "CA") {
   //   x = "You respond only with code for the given task prompted";

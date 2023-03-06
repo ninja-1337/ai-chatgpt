@@ -1,16 +1,9 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "postgresql"
-  // NOTE: When using postgresql, mysql or sqlserver, uncomment the @db.Text annotations in model Account below
-  // Further reading:
-  // https://next-auth.js.org/adapters/prisma#create-the-prisma-schema
-  // https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#string
   url      = env("DATABASE_URL")
 }
 
@@ -56,9 +49,9 @@ model User {
   discoverable  Boolean     @default(false)
   accounts      Account[]
   sessions      Session[]
+  aichat        aichat[]    @relation("ai")
   guestbook     guestbook[] @relation("guest")
   messages      message[]   @relation("post")
-  aichat      aichat[]   @relation("ai")
 }
 
 model VerificationToken {
@@ -90,22 +83,22 @@ model message {
 }
 
 model chatline {
-  id         String   @id @default(cuid())
-  who      String
-  message      String  
-  userId String
-  sent_by    aichat     @relation("gg", fields: [userId], references: [id])
+  id      String @id @default(cuid())
+  who     String
+  message String
+  userId  String
+  sent_by aichat @relation("gg", fields: [userId], references: [id])
 }
 
 model aichat {
-  id         String   @id @default(cuid())
-  chat       chatline[] @relation("gg")
-  userId     String
-  sent_by    User     @relation("ai", fields: [userId], references: [id])
+  id      String     @id @default(cuid())
+  userId  String
+  sent_by User       @relation("ai", fields: [userId], references: [id])
+  chat    chatline[] @relation("gg")
 }
+
 model agents {
-  id         String   @id @default(cuid())
-  name      String
-  prompt       String
-  userId     String
+  id     String @id @default(cuid())
+  name   String
+  prompt String
 }
