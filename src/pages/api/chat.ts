@@ -52,7 +52,7 @@ export default async function handler(req: any, res: any) {
   const agnt = req.body.agent;
   const messagesPrompt = generatePromptFromMessages(messages);
 
-  const agent = prisma.agents.findUnique({
+  const agent = await prisma.agents.findUnique({
     where: {
       id: agnt.toString(),
     },
