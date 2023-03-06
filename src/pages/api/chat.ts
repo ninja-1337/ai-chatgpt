@@ -91,17 +91,17 @@ export default async function handler(req: any, res: any) {
   console.log(finalPrompt);
 
   const payload = {
-    model: "gpt-3.5-turbo",
-    messages: [{ role: "user", content: finalPrompt }],
-    temperature: 0.7,
-    top_p: 1,
-    frequency_penalty: 0,
-    presence_penalty: 0,
+    model: "text-davinci-003",
+    prompt: finalPrompt,
+    temperature: process.env.AI_TEMP ? parseFloat(process.env.AI_TEMP) : 0.7,
     max_tokens: process.env.AI_MAX_TOKENS
       ? parseInt(process.env.AI_MAX_TOKENS)
       : 200,
-    stream: false,
-    n: 1,
+    top_p: 1,
+    frequency_penalty: 0,
+    presence_penalty: 0,
+    stop: [`${botName}:`, `${userName}:`],
+    user: req.body?.user,
   };
 
   /**
