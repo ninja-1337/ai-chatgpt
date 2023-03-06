@@ -61,12 +61,17 @@ export function Chat() {
   const [cookie, setCookie] = useCookies([COOKIE_NAME]);
   const [agent, setAgent] = useState({ value: "", label: "default" });
   const options = [
-    { value: "analogy", label: "Analogy Generator" },
-    { value: "LEA", label: "Code explainer" },
-    { value: "CA", label: "Coding Assistant" },
-    { value: "art", label: "Art prompt generator" },
-    { value: "fantasyart", label: "Fantasy Art prompt generator" },
-    { value: "TSIG", label: "Tech startup idea generator" },
+    { value: "clexazj5h0000u17ohbkzjmyn", label: "Analogy Generator" },
+    { value: "clexc6h020006u17o94y1j9sm", label: "Code explainer" },
+    { value: "clexazj5h0000u17ohbkzjmyn", label: "Coding Assistant" },
+    {
+      value: "clexc4kxz0004u17o9xorddkt",
+      label: "Fantasy Art prompt generator",
+    },
+    {
+      value: "clexc16n10002u17ojbdvkcb3",
+      label: "Tech startup idea generator",
+    },
   ];
   useEffect(() => {
     if (!cookie[COOKIE_NAME]) {

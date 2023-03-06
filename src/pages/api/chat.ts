@@ -1,8 +1,8 @@
 import { Configuration, OpenAIApi } from "openai";
-
+import { prisma } from "../../server/db/client";
 import { initialMessages } from "../../components/Chat";
 import { type Message } from "../../components/ChatLine";
-
+import { trpc } from "../../utils/trpc";
 // break the app if the API key is missing
 if (!process.env.OPENAI_API_KEY) {
   throw new Error("Missing Environment Variable OPENAI_API_KEY");
@@ -19,7 +19,7 @@ const firstMessge = initialMessages[0]?.message;
 const openai = new OpenAIApi(configuration);
 
 // @TODO: unit test this. good case for unit testing
-const generatePromptFromMessages = (messages: Message[], agent: string) => {
+const generatePromptFromMessages = (messages: Message[]) => {
   console.log("== INITIAL messages ==", messages);
 
   let prompt = "";
@@ -45,33 +45,35 @@ const generatePromptFromMessages = (messages: Message[], agent: string) => {
 
 export default async function handler(req: any, res: any) {
   const messages = req.body.messages;
-  const agent: string = req.body.agent;
-  const messagesPrompt = generatePromptFromMessages(messages, agent);
+  const agnt: any = req.body.agent;
+  const messagesPrompt = generatePromptFromMessages(messages);
 
-  let x = "";
+  const agent = trpc.auth.getAgentFromID.useMutation(agnt);
 
-  if (agent === "CA") {
-    x = "You respond only with code for the given task prompted";
-  } else if (agent === "LEA") {
-    x =
-      "You respond only with code explanations of what the user provided or explanations of what you answered before";
-  } else if (agent === "analogy") {
-    x =
-      "Generate analogies like the ones after the dot .  Neural networks are like genetic algorithms in that both are systems that learn from experience.Social media is like a market in that both are systems that coordinate the actions of many individuals. A2E is like lipofuscin in that both are byproducts of the normal operation of a system.Haskell is like LISP in that both are functional languages.Quaternions are like matrices in that both are used to represent rotations in three dimensions.Quaternions are like octonions in that both are examples of non-commutative algebra. Memes are like viruses in that both are self-replicating ideas. Epidemics are like cascading failures in that both are cases where a small perturbation can trigger a large and unpredictable effect. Amorphous computing is like fermentation in that both rely on a network of microscopic agents interacting with each other.";
-  } else if (agent === "fantasyart") {
-    x =
-      "You respond only with an articulate and imaginative and fantasy like text prompt to be used as input into an AI art generation model.That would fit whatever the user described";
-  } else if (agent === "art") {
-    x =
-      "You respond only with an articulate and imaginative text prompts to be used as input into an AI art generation model MidJourney.That would fit whatever the user described";
-  } else if (agent === "") {
-    x = "You are helpfull agent ";
-  } else if (agent === "TSIG") {
-    x =
-      "You respond only with new articulate and unique startup ideas around the text that the user provided.All ideas in your responses should be diffrent from each other.After listing all ideas suggest ways the user could improve his prompts.All ideas should be not similar with each other.Dont use thw same words often.The folowing are ideas for tech startups only to be used as reference and serve as a format of how to respond, software as a service and platforms utilising the t3 stack.#### A startup that lets people rent a suinbed on the beach. #### An Api as a service that offers statistics data for different job positions around the world from real time jobboards like LinkedIn and Glasdoor. #### A startup that lets people easily find nearby parking garages with free parking spots. #### A company that allows people to create and publish their own support chatbot #### ";
-  }
+  const Prmpt = agent.data?.prompt;
 
-  const defaultPrompt = `\n${x}.\n\n${botName}: ${firstMessge}\n${userName}: ${messagesPrompt}\n${botName}: `;
+  // if (agent === "CA") {
+  //   x = "You respond only with code for the given task prompted";
+  // } else if (agent === "LEA") {
+  //   x =
+  //     "You respond only with code explanations of what the user provided or explanations of what you answered before";
+  // } else if (agent === "analogy") {
+  //   x =
+  //     "Generate analogies like the ones after the dot .  Neural networks are like genetic algorithms in that both are systems that learn from experience.Social media is like a market in that both are systems that coordinate the actions of many individuals. A2E is like lipofuscin in that both are byproducts of the normal operation of a system.Haskell is like LISP in that both are functional languages.Quaternions are like matrices in that both are used to represent rotations in three dimensions.Quaternions are like octonions in that both are examples of non-commutative algebra. Memes are like viruses in that both are self-replicating ideas. Epidemics are like cascading failures in that both are cases where a small perturbation can trigger a large and unpredictable effect. Amorphous computing is like fermentation in that both rely on a network of microscopic agents interacting with each other.";
+  // } else if (agent === "fantasyart") {
+  //   x =
+  //     "You respond only with an articulate and imaginative and fantasy like text prompt to be used as input into an AI art generation model.That would fit whatever the user described";
+  // } else if (agent === "art") {
+  //   x =
+  //     "You respond only with an articulate and imaginative text prompts to be used as input into an AI art generation model MidJourney.That would fit whatever the user described";
+  // } else if (agent === "") {
+  //   x = "You are helpfull agent ";
+  // } else if (agent === "TSIG") {
+  //   x =
+  //     "You respond only with new articulate and unique startup ideas around the text that the user provided.All ideas in your responses should be diffrent from each other.After listing all ideas suggest ways the user could improve his prompts.All ideas should be not similar with each other.Dont use thw same words often.The folowing are ideas for tech startups only to be used as reference and serve as a format of how to respond, software as a service and platforms utilising the t3 stack.#### A startup that lets people rent a suinbed on the beach. #### An Api as a service that offers statistics data for different job positions around the world from real time jobboards like LinkedIn and Glasdoor. #### A startup that lets people easily find nearby parking garages with free parking spots. #### A company that allows people to create and publish their own support chatbot #### ";
+  // }
+
+  const defaultPrompt = `\n${Prmpt}.\n\n${botName}: ${firstMessge}\n${userName}: ${messagesPrompt}\n${botName}: `;
   const finalPrompt = process.env.AI_PROMPT
     ? `${process.env.AI_PROMPT}${messagesPrompt}\n${botName}: `
     : defaultPrompt;

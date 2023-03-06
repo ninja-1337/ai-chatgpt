@@ -11,8 +11,12 @@ export const authRouter = router({
   getSecretMessage: protectedProcedure.query(() => {
     return "Content just for authenticated Users";
   }),
-  getSecretMessage2: protectedProcedure.query(() => {
-    return "Content just for authenticated Users";
+  getAgentFromId: protectedProcedure.query((input) => {
+    return prisma.agents.findUnique({
+      where: {
+        id: input.toString(),
+      },
+    });
   }),
   getUserMessages: protectedProcedure.query(({ ctx }) => {
     return ctx.prisma.message.findMany({
@@ -59,6 +63,19 @@ export const authRouter = router({
           email: "" + ctx.session?.user?.email,
           body: input.text,
           userId: ctx.session?.user.id,
+        },
+      });
+    }),
+  getAgentFromID: protectedProcedure
+    .input(
+      z.object({
+        text: z.string(),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      return prisma.agents.findUnique({
+        where: {
+          id: input.text,
         },
       });
     }),

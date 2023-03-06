@@ -27,7 +27,7 @@ const Home: NextPage = () => {
 export default Home;
 
 const AuthShowcase: React.FC = () => {
-  const { data: secretMessage } = trpc.auth.getSecretMessage2.useQuery();
+  const { data: secretMessage } = trpc.auth.getSecretMessage.useQuery();
 
   const { data: sessionData } = useSession();
 
