@@ -14,12 +14,8 @@ export const authRouter = router({
   getSecretMessage2: protectedProcedure.query(() => {
     return "Content just for authenticated Users";
   }),
-  getAgentFromId: protectedProcedure.query((input) => {
-    return prisma.agents.findUnique({
-      where: {
-        id: input.toString(),
-      },
-    });
+  getAgents: protectedProcedure.query(() => {
+    return prisma.agents.findMany();
   }),
   getUserMessages: protectedProcedure.query(({ ctx }) => {
     return ctx.prisma.message.findMany({

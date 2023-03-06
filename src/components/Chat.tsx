@@ -3,6 +3,8 @@ import { Button } from "./Button";
 import { type Message, ChatLine, LoadingChatLine } from "./ChatLine";
 import { useCookies } from "react-cookie";
 import Select from "react-select";
+
+import { trpc } from "../utils/trpc";
 const COOKIE_NAME = "nextjs-example-ai-chat-gpt3";
 
 // default first message to display in UI (not necessary to define the prompt)
@@ -60,6 +62,9 @@ export function Chat() {
   const [loading, setLoading] = useState(false);
   const [cookie, setCookie] = useCookies([COOKIE_NAME]);
   const [agent, setAgent] = useState({ value: "", label: "default" });
+
+  const agents = trpc.auth.getAgents.useQuery();
+
   const options = [
     { value: "clexc7czm0008u17ocdxk8eve", label: "Analogy Generator" },
     { value: "clexc6h020006u17o94y1j9sm", label: "Code explainer" },
@@ -121,7 +126,7 @@ export function Chat() {
           setAgent(state as any);
           setMessages(initialMessages);
         }}
-        options={options}
+        options={agents.data}
         isSearchable={false}
       />
       <div className="rounded-2xl border-zinc-100 lg:border lg:p-6">
