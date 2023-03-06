@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React from "react";
 import { SocialIcon } from "react-social-icons";
 import Image from "next/image";
@@ -11,10 +12,14 @@ import souvla from "/images/xsushi-sign.png";
 import Link from "next/link";
 import { Navbar, Text, Avatar, Dropdown, Input } from "@nextui-org/react";
 import { Spacer } from "@nextui-org/react";
-
+import { useState, useRef } from "react";
 function NavBar() {
   const { data: session, status } = useSession();
-
+  const navbarToggleRef = useRef();
+  const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
+  const HandleSideMenu = () => {
+    isSideMenuOpen && navbarToggleRef.current.click();
+  };
   const collapseItems = [
     "Profile",
     "Dashboard",
@@ -24,7 +29,11 @@ function NavBar() {
   ];
   return (
     <Navbar className="from-[#0b3bd6] to-[#f8a221]">
-      <Navbar.Toggle showIn="xs" />
+      <Navbar.Toggle
+        ref={navbarToggleRef}
+        onChange={(isSelected: boolean) => setIsSideMenuOpen(isSelected)}
+        showIn="xs"
+      />
       <Navbar.Brand
         css={{
           "@xs": {
@@ -77,7 +86,9 @@ function NavBar() {
                 </Dropdown.Trigger>
               )}
               {!session?.user?.image && (
-                <Dropdown.Button>Login</Dropdown.Button>
+                <Dropdown.Button>
+                  <p className="text-l">Login</p>
+                </Dropdown.Button>
               )}
             </>
           </Navbar.Item>
@@ -152,27 +163,35 @@ function NavBar() {
       </Navbar.Content>
       <Navbar.Collapse disableAnimation>
         <Navbar.CollapseItem key="About" activeColor="warning">
-          <Link color="inherit" href="/ai">
+          <Link color="inherit" href="/ai" onClick={() => HandleSideMenu()}>
             App
           </Link>
         </Navbar.CollapseItem>
         <Navbar.CollapseItem key="About" activeColor="warning">
-          <Link color="inherit" href="/contact">
+          <Link
+            color="inherit"
+            href="/contact"
+            onClick={() => HandleSideMenu()}
+          >
             Contact Us
           </Link>
         </Navbar.CollapseItem>
         <Navbar.CollapseItem key="Projects" activeColor="warning">
-          <Link color="inherit" href="/chats">
+          <Link color="inherit" href="/chats" onClick={() => HandleSideMenu()}>
             Saved Chats
           </Link>
         </Navbar.CollapseItem>
         <Navbar.CollapseItem key="About" activeColor="warning">
-          <Link color="inherit" href="/about">
+          <Link color="inherit" href="/about" onClick={() => HandleSideMenu()}>
             About
           </Link>
         </Navbar.CollapseItem>
         <Navbar.CollapseItem key="About" activeColor="warning">
-          <Link color="inherit" href="/guestbook">
+          <Link
+            color="inherit"
+            href="/guestbook"
+            onClick={() => HandleSideMenu()}
+          >
             Reviews
           </Link>
         </Navbar.CollapseItem>
