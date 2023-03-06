@@ -53,9 +53,13 @@ export default async function handler(req: any, res: any) {
   const agnt = req.body.agent;
   const messagesPrompt = messages;
 
-  const agent = trpc.auth.getAgentFromID.useMutation(agnt);
+  const agent: any = prisma.agents.findUnique({
+    where: {
+      id: agnt.text,
+    },
+  });
 
-  const Prmpt = agent.data?.prompt;
+  const Prmpt = agent;
   res.status(200).json({ text: Prmpt });
   // if (agent === "CA") {
   //   x = "You respond only with code for the given task prompted";
