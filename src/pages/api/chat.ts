@@ -61,7 +61,7 @@ export default async function handler(req: any, res: any) {
     },
   });
 
-  const Prmpt = agent?.toString();
+  const Prmpt = agent?.prompt.toString();
 
   // if (agent === "CA") {
   //   x = "You respond only with code for the given task prompted";
