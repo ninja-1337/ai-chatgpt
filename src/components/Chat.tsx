@@ -64,7 +64,6 @@ export function Chat() {
   const [agent, setAgent] = useState({ value: "", label: "default" });
 
   const agents = trpc.auth.getAgents.useQuery();
-
   const options = [
     { value: "clexc7czm0008u17ocdxk8eve", label: "Analogy Generator" },
     { value: "clexc6h020006u17o94y1j9sm", label: "Code explainer" },
@@ -78,6 +77,10 @@ export function Chat() {
       label: "Tech startup idea generator",
     },
   ];
+  agents.data?.forEach(function (agent) {
+    options.push({ value: agent.id, label: agent.name });
+  });
+
   useEffect(() => {
     if (!cookie[COOKIE_NAME]) {
       // generate a semi random short id
