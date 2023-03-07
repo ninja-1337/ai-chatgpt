@@ -18,7 +18,7 @@ function Home() {
           </section>
           <section className="flex flex-col items-center gap-3">
             <Text variant="h2">Chat</Text>
-            <div className="lg:w-2/3">
+            <div className="">
               <Chat />
             </div>
           </section>
