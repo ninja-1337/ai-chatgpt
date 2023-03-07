@@ -157,7 +157,15 @@ export function Chat() {
   };
 
   const createAgent = async (AgentName: string, AgentPrompt: string) => {
-    return 0;
+    const create = trpc.auth.createUserAgent.useMutation({
+      async onSuccess() {
+        // refetches posts after a post is added
+      },
+    });
+    await create.mutateAsync({
+      name: AgentName,
+      prompt: AgentPrompt,
+    });
   };
 
   return (
