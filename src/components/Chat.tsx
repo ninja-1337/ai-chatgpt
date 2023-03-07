@@ -58,7 +58,7 @@ const Agent = ({
 );
 
 const InputMessage = ({ input, setInput, sendMessage }: any) => (
-  <div className="clear-both mt-6 flex w-11/12">
+  <div className="clear-both mt-6 flex w-full">
     <input
       type="text"
       aria-label="chat input"
