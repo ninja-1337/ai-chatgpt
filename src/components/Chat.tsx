@@ -174,7 +174,8 @@ export function Chat() {
   };
 
   return (
-    <div>
+    <>
+      {" "}
       <Agent
         agentName={newAgentName}
         setAgentName={setNewAgentName}
@@ -182,34 +183,36 @@ export function Chat() {
         setAgentPrompt={setNewAgentPrompt}
         createNewAgent={createAgent}
       />
-      <Select
-        onChange={(state) => {
-          setAgent(state as any);
-          setMessages(initialMessages);
-        }}
-        options={options}
-        isSearchable={false}
-      />
-      <div className="rounded-2xl border-zinc-100 lg:border lg:p-6">
-        {messages.map(({ message, who }, index) => (
-          <>
-            <ChatLine key={index} who={who} message={message} />
-          </>
-        ))}
-
-        {loading && <LoadingChatLine />}
-
-        {messages.length < 2 && (
-          <span className="clear-both mx-4 flex  text-gray-600">
-            Type a message to start the conversation
-          </span>
-        )}
-        <InputMessage
-          input={input}
-          setInput={setInput}
-          sendMessage={sendMessage}
+      <div>
+        <Select
+          onChange={(state) => {
+            setAgent(state as any);
+            setMessages(initialMessages);
+          }}
+          options={options}
+          isSearchable={false}
         />
+        <div className="rounded-2xl border-zinc-100 lg:border lg:p-6">
+          {messages.map(({ message, who }, index) => (
+            <>
+              <ChatLine key={index} who={who} message={message} />
+            </>
+          ))}
+
+          {loading && <LoadingChatLine />}
+
+          {messages.length < 2 && (
+            <span className="clear-both mx-4 flex  text-gray-600">
+              Type a message to start the conversation
+            </span>
+          )}
+          <InputMessage
+            input={input}
+            setInput={setInput}
+            sendMessage={sendMessage}
+          />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
