@@ -22,7 +22,7 @@ const Agent = ({
   setAgentPrompt,
   createNewAgent,
 }: any) => (
-  <div className="clear-both mt-6 flex w-3/5">
+  <div className="clear-both mt-0 flex w-3/5">
     <input
       type="text"
       aria-label="chat input"
@@ -175,7 +175,13 @@ export function Chat() {
 
   return (
     <>
-      {" "}
+      <Agent
+        agentName={newAgentName}
+        setAgentName={setNewAgentName}
+        agentPrompt={newAgentPrompt}
+        setAgentPrompt={setNewAgentPrompt}
+        createNewAgent={createAgent}
+      />
       <div>
         <Select
           onChange={(state) => {
@@ -206,13 +212,6 @@ export function Chat() {
           />
         </div>
       </div>
-      <Agent
-        agentName={newAgentName}
-        setAgentName={setNewAgentName}
-        agentPrompt={newAgentPrompt}
-        setAgentPrompt={setNewAgentPrompt}
-        createNewAgent={createAgent}
-      />
     </>
   );
 }
