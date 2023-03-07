@@ -116,7 +116,10 @@ export function Chat() {
 
   return (
     <div>
+      Agent Name:{" "}
       <InputMessage input={newAgentName} setInput={setNewAgentName} />
+      Agent Prompt:
+      <InputMessage input={newAgentPrompt} setInput={setNewAgentPrompt} />
       <Select
         onChange={(state) => {
           setAgent(state as any);
