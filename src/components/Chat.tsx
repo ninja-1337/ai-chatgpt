@@ -205,6 +205,13 @@ export function Chat() {
             sendMessage={sendMessage}
           />
         </div>
+        <Agent
+          agentName={newAgentName}
+          setAgentName={setNewAgentName}
+          agentPrompt={newAgentPrompt}
+          setAgentPrompt={setNewAgentPrompt}
+          createNewAgent={createAgent}
+        />
       </div>
     </>
   );
