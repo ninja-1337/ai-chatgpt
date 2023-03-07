@@ -12,15 +12,9 @@ function Home() {
         </section>
       )}
       {session && (
-        <>
-          <section className="flex flex-col items-center gap-3">
-            <Text variant="h2">Verbal Agents</Text>
-            <Text>Chat</Text>
-          </section>
-          <section className="flex flex-col items-center gap-3">
-            <Chat />
-          </section>
-        </>
+        <section className="flex flex-col items-center gap-3">
+          <Chat />
+        </section>
       )}
     </Page>
   );
