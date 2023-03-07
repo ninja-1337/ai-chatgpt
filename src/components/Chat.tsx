@@ -106,7 +106,11 @@ export function Chat() {
   const [loading, setLoading] = useState(false);
   const [cookie, setCookie] = useCookies([COOKIE_NAME]);
   const [agent, setAgent] = useState({ value: "", label: "default" });
-
+  const create = trpc.auth.createUserAgent.useMutation({
+    async onSuccess() {
+      // refetches posts after a post is added
+    },
+  });
   const agents = trpc.auth.getAgents.useQuery();
   const options = [
     { value: "clexc7czm0008u17ocdxk8eve", label: "Analogy Generator" },
@@ -156,17 +160,16 @@ export function Chat() {
     setLoading(false);
   };
 
-  const createAgent = (AgentName: string, AgentPrompt: string) => {
-    const create = trpc.auth.createUserAgent.useMutation({
-      async onSuccess() {
-        // refetches posts after a post is added
-      },
-    });
-
-    create.mutateAsync({
-      name: AgentName,
-      prompt: AgentPrompt,
-    });
+  const createAgent = async (AgentName: string, AgentPrompt: string) => {
+    try {
+      await create.mutateAsync({
+        name: AgentName,
+        prompt: AgentPrompt,
+      });
+      window.location.reload();
+    } catch (cause) {
+      console.error({ cause }, "Failed to add post");
+    }
   };
 
   return (
