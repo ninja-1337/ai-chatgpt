@@ -111,14 +111,15 @@ export function Chat() {
       // refetches posts after a post is added
     },
   });
-  const agents = trpc.auth.getAgents.useQuery();
+  const agents = trpc.auth.getUserAgents.useQuery();
   const options = [
     { value: "clexc7czm0008u17ocdxk8eve", label: "Analogy Generator" },
   ];
+
   agents.data?.forEach(function (agent) {
     options.push({ value: agent.id, label: agent.name });
   });
-
+  console.log(options);
   useEffect(() => {
     if (!cookie[COOKIE_NAME]) {
       // generate a semi random short id
