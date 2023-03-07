@@ -22,7 +22,7 @@ const Agent = ({
   setAgentPrompt,
   createNewAgent,
 }: any) => (
-  <div className="clear-both mt-0 flex w-4/6">
+  <div className="clear-both mt-0 flex w-11/12">
     <input
       type="text"
       aria-label="chat input"
@@ -58,7 +58,7 @@ const Agent = ({
 );
 
 const InputMessage = ({ input, setInput, sendMessage }: any) => (
-  <div className="clear-both mt-6 flex w-4/6">
+  <div className="clear-both mt-6 flex w-11/12">
     <input
       type="text"
       aria-label="chat input"
