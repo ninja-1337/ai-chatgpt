@@ -22,7 +22,7 @@ const Agent = ({
   setAgentPrompt,
   createNewAgent,
 }: any) => (
-  <div className="clear-both mt-6 flex w-11/12">
+  <div className="clear-both mt-6 flex w-3/5">
     <input
       type="text"
       aria-label="chat input"
@@ -205,14 +205,14 @@ export function Chat() {
             sendMessage={sendMessage}
           />
         </div>
-        <Agent
-          agentName={newAgentName}
-          setAgentName={setNewAgentName}
-          agentPrompt={newAgentPrompt}
-          setAgentPrompt={setNewAgentPrompt}
-          createNewAgent={createAgent}
-        />
       </div>
+      <Agent
+        agentName={newAgentName}
+        setAgentName={setNewAgentName}
+        agentPrompt={newAgentPrompt}
+        setAgentPrompt={setNewAgentPrompt}
+        createNewAgent={createAgent}
+      />
     </>
   );
 }
