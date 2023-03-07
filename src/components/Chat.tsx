@@ -156,22 +156,17 @@ export function Chat() {
     setLoading(false);
   };
 
-  const createAgent = async (AgentName: string, AgentPrompt: string) => {
+  const createAgent = (AgentName: string, AgentPrompt: string) => {
     const create = trpc.auth.createUserAgent.useMutation({
       async onSuccess() {
         // refetches posts after a post is added
       },
     });
 
-    try {
-      await create.mutateAsync({
-        name: AgentName,
-        prompt: AgentPrompt,
-      });
-      window.location.reload();
-    } catch (cause) {
-      console.error({ cause }, "Failed to add post");
-    }
+    create.mutateAsync({
+      name: AgentName,
+      prompt: AgentPrompt,
+    });
   };
 
   return (
