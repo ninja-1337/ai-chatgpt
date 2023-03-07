@@ -162,6 +162,7 @@ export function Chat() {
         // refetches posts after a post is added
       },
     });
+    console.log(AgentName, AgentPrompt);
     await create.mutateAsync({
       name: AgentName,
       prompt: AgentPrompt,
