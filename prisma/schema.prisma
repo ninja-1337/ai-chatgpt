@@ -40,19 +40,19 @@ model Session {
 }
 
 model User {
-  id            String       @id @default(cuid())
+  id            String      @id @default(cuid())
   name          String?
-  email         String?      @unique
+  email         String?     @unique
   emailVerified DateTime?
   image         String?
-  subscribed    Boolean      @default(false)
-  discoverable  Boolean      @default(false)
+  subscribed    Boolean     @default(false)
+  discoverable  Boolean     @default(false)
   accounts      Account[]
   sessions      Session[]
-  aichat        aichat[]     @relation("ai")
-  guestbook     guestbook[]  @relation("guest")
-  messages      message[]    @relation("post")
-  userAgents    agents[] @relation("uagent")
+  userAgents    agents[]    @relation("uagent")
+  aichat        aichat[]    @relation("ai")
+  guestbook     guestbook[] @relation("guest")
+  messages      message[]   @relation("post")
 }
 
 model VerificationToken {
@@ -99,12 +99,11 @@ model aichat {
 }
 
 model agents {
-  id     String @id @default(cuid())
-  name   String
-  prompt String
-   userId     String
+  id         String   @id @default(cuid())
+  name       String
+  prompt     String
+  userId     String
   created_at DateTime @default(now())
   updated_at DateTime @default(now())
-  user       User    @relation("uagent", fields: [userId], references: [id])
+  user       User     @relation("uagent", fields: [userId], references: [id])
 }
-

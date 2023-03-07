@@ -76,16 +76,19 @@ export const authRouter = router({
         },
       });
     }),
-  getAgentFromID: protectedProcedure
+  createUserAgent: protectedProcedure
     .input(
       z.object({
-        text: z.string(),
+        prompt: z.string(),
+        name: z.string(),
       })
     )
     .mutation(async ({ ctx, input }) => {
-      return prisma.agents.findUnique({
-        where: {
-          id: input.text,
+      const post = await prisma.agents.create({
+        data: {
+          name: input.name,
+          prompt: input.prompt,
+          userId: ctx.session?.user.id,
         },
       });
     }),

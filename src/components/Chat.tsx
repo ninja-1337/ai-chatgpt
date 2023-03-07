@@ -59,6 +59,8 @@ const InputMessage = ({ input, setInput, sendMessage }: any) => (
 export function Chat() {
   const [messages, setMessages] = useState<Message[]>(initialMessages);
   const [input, setInput] = useState("");
+  const [newAgentName, setNewAgentName] = useState("");
+  const [newAgentPrompt, setNewAgentPrompt] = useState("");
   const [loading, setLoading] = useState(false);
   const [cookie, setCookie] = useCookies([COOKIE_NAME]);
   const [agent, setAgent] = useState({ value: "", label: "default" });
@@ -114,6 +116,7 @@ export function Chat() {
 
   return (
     <div>
+      <InputMessage input={newAgentName} setInput={setNewAgentName} />
       <Select
         onChange={(state) => {
           setAgent(state as any);
