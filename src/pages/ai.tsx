@@ -13,14 +13,12 @@ function Home() {
       )}
       {session && (
         <>
-          <section className="flex flex-col items-center gap-6">
+          <section className="flex flex-col items-center gap-3">
             <Text variant="h2">Verbal Agents</Text>
             <Text>Chat</Text>
           </section>
           <section className="flex flex-col items-center gap-3">
-            <div className="lg:w-2/3">
-              <Chat />
-            </div>
+            <Chat />
           </section>
         </>
       )}
