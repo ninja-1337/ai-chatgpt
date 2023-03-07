@@ -156,11 +156,20 @@ export function Chat() {
     setLoading(false);
   };
 
+  const createAgent = async (AgentName: string, AgentPrompt: string) => {
+    return 0;
+  };
+
   return (
     <div>
-      Agent Name: <Agent input={newAgentName} setInput={setNewAgentName} />
-      Agent Prompt:
-      <Agent input={newAgentPrompt} setInput={setNewAgentPrompt} />
+      agentName, setAgentName, agentPrompt, setAgentPrompt, createNewAgent,
+      Agent Name:{" "}
+      <Agent
+        agentName={newAgentName}
+        setAgentName={setNewAgentName}
+        agentPrompt={newAgentPrompt}
+        setAgentPrompt={setNewAgentPrompt}
+      />
       <Select
         onChange={(state) => {
           setAgent(state as any);
