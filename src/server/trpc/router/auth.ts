@@ -68,7 +68,7 @@ export const authRouter = router({
       })
     )
     .mutation(async ({ ctx, input }) => {
-      const post = await prisma.message.create({
+      await prisma.message.create({
         data: {
           email: "" + ctx.session?.user?.email,
           body: input.text,
@@ -84,7 +84,7 @@ export const authRouter = router({
       })
     )
     .mutation(async ({ ctx, input }) => {
-      const agent = await prisma.agents.create({
+      await prisma.agents.create({
         data: {
           name: input.name,
           prompt: input.prompt,
