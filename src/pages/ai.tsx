@@ -5,7 +5,7 @@ function Home() {
   const { data: session, status } = useSession();
 
   return (
-    <Page className="flex flex-col gap-12">
+    <Page className="flex flex-col gap-6">
       {!session && (
         <section className="flex flex-col items-center gap-6">
           <Text variant="h1">Please login to use App</Text>
