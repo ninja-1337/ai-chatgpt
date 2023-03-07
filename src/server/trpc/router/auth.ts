@@ -86,8 +86,8 @@ export const authRouter = router({
     .mutation(async ({ ctx, input }) => {
       await prisma.agents.create({
         data: {
-          name: input.name,
-          prompt: input.prompt,
+          name: "" + input.name,
+          prompt: "" + input.prompt,
           userId: ctx.session?.user.id,
         },
       });
