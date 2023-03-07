@@ -176,13 +176,6 @@ export function Chat() {
   return (
     <>
       {" "}
-      <Agent
-        agentName={newAgentName}
-        setAgentName={setNewAgentName}
-        agentPrompt={newAgentPrompt}
-        setAgentPrompt={setNewAgentPrompt}
-        createNewAgent={createAgent}
-      />
       <div>
         <Select
           onChange={(state) => {
