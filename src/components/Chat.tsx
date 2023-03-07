@@ -174,7 +174,7 @@ export function Chat() {
   };
 
   return (
-    <div>
+    <div className="w-4/6">
       <Agent
         agentName={newAgentName}
         setAgentName={setNewAgentName}
