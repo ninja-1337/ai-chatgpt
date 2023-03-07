@@ -22,7 +22,7 @@ export const authRouter = router({
     });
   }),
   getUserAgents: protectedProcedure.query(({ ctx }) => {
-    return prisma.agents.findMany({
+    return ctx.prisma.agents.findMany({
       where: {
         id: ctx.session.user.id,
       },
