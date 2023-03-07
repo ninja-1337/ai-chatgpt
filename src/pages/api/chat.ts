@@ -89,7 +89,19 @@ export default async function handler(req: any, res: any) {
     ? `${process.env.AI_PROMPT}${messagesPrompt}\n${botName}: `
     : defaultPrompt;
   console.log(finalPrompt);
-
+  // const payload = {
+  //   model: "gpt-3.5-turbo",
+  //   messages: [{ role: "user", content: finalPrompt }],
+  //   temperature: 0.7,
+  //   top_p: 1,
+  //   frequency_penalty: 0,
+  //   presence_penalty: 0,
+  //   max_tokens: process.env.AI_MAX_TOKENS
+  //     ? parseInt(process.env.AI_MAX_TOKENS)
+  //     : 200,
+  //   stream: false,
+  //   n: 1,
+  // };
   const payload = {
     model: "text-davinci-003",
     prompt: finalPrompt,
