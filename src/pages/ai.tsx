@@ -15,12 +15,10 @@ function Home() {
         <>
           <section className="flex flex-col items-center gap-6">
             <Text variant="h1">Verbal Agents</Text>
+            <Text variant="h2">Chat</Text>
           </section>
           <section className="flex flex-col items-center gap-3">
-            <Text variant="h2">Chat</Text>
-            <div className="">
-              <Chat />
-            </div>
+            <Chat />
           </section>
         </>
       )}
