@@ -34,7 +34,7 @@ const Agent = ({
         setAgentName(e.target.value);
       }}
     />
-    Agent Prompt:
+    Prompt :
     <input
       type="text"
       aria-label="chat input"
