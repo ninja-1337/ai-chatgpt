@@ -22,7 +22,7 @@ const Agent = ({
   setAgentPrompt,
   createNewAgent,
 }: any) => (
-  <div className="clear-both mt-0 flex w-11/12">
+  <div className="clear-both mt-0 flex w-full">
     Agent Name:
     <input
       type="text"
