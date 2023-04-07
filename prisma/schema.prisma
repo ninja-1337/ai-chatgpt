@@ -96,6 +96,7 @@ model aichat {
   userId  String
   sent_by User       @relation("ai", fields: [userId], references: [id])
   chat    chatline[] @relation("chatline")
+   @@unique([id, userId])
 }
 
 model agents {

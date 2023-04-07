@@ -38,6 +38,17 @@ export const authRouter = router({
       },
     });
   }),
+  getUserSavedChat: protectedProcedure.query(({ ctx, input }) => {
+    return ctx.prisma.aichat.findUnique({
+      where: {
+        id_userId : { id: input.toString() , userId: ctx.session.user.id },
+      
+      },
+      include: {
+        chat: true, // Return all fields
+      },
+    });
+  }),
   getUserDiscoverable: protectedProcedure.query(({ ctx }) => {
     return ctx.prisma.user.findUnique({
       where: {
