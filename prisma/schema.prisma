@@ -88,14 +88,14 @@ model chatline {
   who     String
   message String
   userId  String
-  sent_by aichat @relation("gg", fields: [userId], references: [id])
+  sent_by aichat @relation("chatline", fields: [userId], references: [id])
 }
 
 model aichat {
   id      String     @id @default(cuid())
   userId  String
   sent_by User       @relation("ai", fields: [userId], references: [id])
-  chat    chatline[] @relation("gg")
+  chat    chatline[] @relation("chatline")
 }
 
 model agents {
