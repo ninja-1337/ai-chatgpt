@@ -17,7 +17,7 @@ function Home() {
       )}
       {session && (
         <section className="flex h-3/4 flex-col items-center gap-3">
-           <p>Post: {savedchat}</p>
+           <p>Chat Slug: {savedchat}</p>
           <Chat />
         </section>
       )}
