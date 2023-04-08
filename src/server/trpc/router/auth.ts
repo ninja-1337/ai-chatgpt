@@ -49,7 +49,7 @@ export const authRouter = router({
           },
           {
             OR: [
-             {userId:'clfv05c140002l7088u4765bh'}
+             {userId:'clfspjtrl0000ld086bf6h44e'}
             ]
           }
         ]
