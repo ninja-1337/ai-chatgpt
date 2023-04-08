@@ -115,7 +115,7 @@ export function Chat() {
   });
   const agents = trpc.auth.getUserAgents.useQuery();
   const options = [
-    { value: "clexc7czm0008u17ocdxk8eve", label: "Analogy Generator" },
+    { value: "", label: "" },
   ];
 
   agents.data?.forEach(function (agent) {
