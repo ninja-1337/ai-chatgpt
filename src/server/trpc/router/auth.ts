@@ -42,7 +42,7 @@ export const authRouter = router({
           },
           {
             OR: [
-             {id: "clfspjtrl0000ld086bf6h44e"}
+             {id: "clfv05c140002l7088u4765bh"}
             ]
           }
         ]
