@@ -34,7 +34,7 @@ export const authRouter = router({
   getAgents: protectedProcedure.query(({ ctx }) => {
     return prisma.agents.findMany({
       where: {
-        AND: [
+        OR: [
           {
             OR: [
            {id: ctx.session.user.id}
@@ -42,7 +42,7 @@ export const authRouter = router({
           },
           {
             OR: [
-             {id: "clfv05c140002l7088u4765bh"}
+             {userId: "clfv05c140002l7088u4765bh"}
             ]
           }
         ]
