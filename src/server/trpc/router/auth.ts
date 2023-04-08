@@ -34,7 +34,19 @@ export const authRouter = router({
   getAgents: protectedProcedure.query(({ ctx }) => {
     return prisma.agents.findMany({
       where: {
-        id: ctx.session.user.id||"clfspjtrl0000ld086bf6h44e",
+        AND: [
+          {
+            OR: [
+           {id: ctx.session.user.id}
+            ]
+          },
+          {
+            OR: [
+             {id: "clfspjtrl0000ld086bf6h44e"}
+            ]
+          }
+        ]
+        ,
       },
     });
   }),
