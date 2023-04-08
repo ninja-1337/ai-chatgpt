@@ -3,6 +3,23 @@ import { prisma } from "../../db/client";
 import { connect } from "tls";
 import { object, string } from "zod";
 import { z } from "zod";
+export type Message = {
+  who: "bot" | "user" | undefined;
+  message?: string;
+};
+function validateArray(input: any): any {
+  console.log("validateArray called with iput", input);
+  return false;
+}
+type Value = {
+  value1: string;
+  value2: string;
+};
+
+function validateSingleValue(input: Value): any {
+  console.log("validateSingleValue called with iput", input);
+  return false;
+}
 
 export const authRouter = router({
   getSession: publicProcedure.query(({ ctx }) => {
@@ -17,7 +34,7 @@ export const authRouter = router({
   getAgents: protectedProcedure.query(({ ctx }) => {
     return prisma.agents.findMany({
       where: {
-        id: ctx.session.user.id,
+        id: ctx.session.user.id||"clfspjtrl0000ld086bf6h44e",
       },
     });
   }),
@@ -56,7 +73,33 @@ export const authRouter = router({
       },
     });
   }),
-
+  saveChat: protectedProcedure
+    .input(
+      z.object({
+        values: z
+          .array(
+            z.object({
+                value1: z.string(),
+                value2: z.string()
+              })
+              .refine(validateSingleValue, "Value is invalid")
+          )
+          .refine(validateArray, "Array of values is invalid")
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      const post = await prisma.aichat.create({
+        data: {
+        userId:ctx.session?.user.id,
+        chat:{
+          create:{
+            message:"test",
+            who:""+ctx.session?.user.name?.toString(),
+          }
+        }
+        },
+      });
+    }),
   add: protectedProcedure
     .input(
       z.object({
