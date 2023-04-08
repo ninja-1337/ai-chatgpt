@@ -34,6 +34,13 @@ export const authRouter = router({
   getAgents: protectedProcedure.query(({ ctx }) => {
     return prisma.agents.findMany({
       where: {
+        id: ctx.session.user.id,
+      },
+    });
+  }),
+  getUserAgents: protectedProcedure.query(({ ctx }) => {
+    return ctx.prisma.agents.findMany({
+      where: {
         OR: [
           {
             OR: [
@@ -47,13 +54,6 @@ export const authRouter = router({
           }
         ]
         ,
-      },
-    });
-  }),
-  getUserAgents: protectedProcedure.query(({ ctx }) => {
-    return ctx.prisma.agents.findMany({
-      where: {
-        userId: ctx.session.user.id,
       },
     });
   }),
