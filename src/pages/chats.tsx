@@ -46,7 +46,7 @@ const Home: NextPage = () => {
               <p>Messages:
               {message.map((msg:any)=>{
                 <>
-                {msg.toString}
+                {msg.toString()}
                 <p>{msg.who.text+":"+msg.message.text}</p>
                 </>
               })}
