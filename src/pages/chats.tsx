@@ -45,7 +45,7 @@ const Home: NextPage = () => {
    return  <><p>ChatID: {chat.id}</p>
               <p>Messages:
               {message.map((message:any)=>{
-                <p>{message.who+":"+message.message}</p>
+                <p>{message.who.text+":"+message.message.text}</p>
               })}
               </p>
    </>
