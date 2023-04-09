@@ -3,7 +3,7 @@ import { Button } from "./Button";
 import { type Message, ChatLine, LoadingChatLine } from "./ChatLine";
 import { useCookies } from "react-cookie";
 import Select from "react-select";
-
+import { ToastContainer, toast } from 'react-toastify';
 import { trpc } from "../utils/trpc";
 const COOKIE_NAME = "nextjs-example-ai-chat-gpt3";
 
@@ -174,7 +174,16 @@ export function Chat() {
         name: AgentName,
         prompt: AgentPrompt,
       });
-      window.location.reload();
+      toast('Agent added.', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
     } catch (cause) {
       console.error({ cause }, "Failed to add post");
     }
@@ -188,7 +197,16 @@ export function Chat() {
         text:messages.toString(),
        
       });
-      console.log(messages)
+      toast('Chat Saved', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
     } catch (cause) {
       console.error({ cause }, "Failed to add Chat to DB");
     }
