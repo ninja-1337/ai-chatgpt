@@ -70,11 +70,11 @@ export const authRouter = router({
   getUserSavedChat: protectedProcedure.query(({ ctx, input }) => {
     return ctx.prisma.aichats.findMany({
       where: {
-        id_userId : { id: input.toString() , userId: ctx.session.user.id },
+        userId : ctx.session.user.id ,
       
       },
       include: {
-        chat: true, // Return all fields
+        sent_by: true, // Return all fields
       },
     });
   }),
