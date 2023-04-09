@@ -91,8 +91,8 @@ const InputMessage = ({ input, setInput, sendMessage , messages , createChat}: a
       type=""
       className="ml-2 flex-none text-xs"
       onClick={() => {
-        createChat(messages.toString())
-        console.log(messages.toString())
+        createChat()
+  
       }}
     >
       Share-Chat
@@ -181,12 +181,14 @@ export function Chat() {
   };
 
 
-  const createChat = async (Chat: string) => {
+  const createChat = async () => {
     try {
+      
       await saveChat.mutateAsync({
-        text:Chat,
-        
+        text:messages.toString(),
+       
       });
+      console.log(messages)
     } catch (cause) {
       console.error({ cause }, "Failed to add Chat to DB");
     }
