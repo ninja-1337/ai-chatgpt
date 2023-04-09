@@ -12,7 +12,7 @@ const Home: NextPage = () => {
   const chats = savedChats?.map((chat) => {
     console.log(chat)
     const json:any =chat.chat
-   const message= JSON.parse(json?.input?.text)
+   const message= JSON.parse(json?.input)
     console.log(message)
    return  <><p>ChatID: {chat.id}</p>
               <p>Messages:
