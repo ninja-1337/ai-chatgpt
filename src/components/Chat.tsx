@@ -229,7 +229,7 @@ export function Chat() {
             setInput={setInput}
             sendMessage={sendMessage}
             chat={messages}
-            createChat={saveChat}
+            createChat={createChat}
           />
         </div>
       </div>
