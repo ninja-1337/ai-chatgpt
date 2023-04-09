@@ -5,6 +5,8 @@ import Layout from "../components/layout";
 import { trpc } from "../utils/trpc";
 import { ToastContainer, toast } from 'react-toastify';
 import "../styles/globals.css";
+import 'react-toastify/dist/ReactToastify.css';
+import "../styles/globals.css";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
