@@ -22,7 +22,7 @@ const Home: NextPage = () => {
           <span className="text-black-300">Saved Chats</span>
         
         </h1>
-        <p>{savedChats?.toString()}</p>
+        <p>{JSON.stringify(savedChats)}</p>
         </>
       </main>
     </>
