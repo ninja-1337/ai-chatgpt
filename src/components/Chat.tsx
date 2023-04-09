@@ -194,7 +194,7 @@ export function Chat() {
     try {
       
       await saveChat.mutateAsync({
-        text:messages.toString(),
+        text:JSON.stringify(messages),
        
       });
       toast('Chat Saved', {
