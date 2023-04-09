@@ -59,7 +59,7 @@ const Agent = ({
   </div>
 );
 
-const InputMessage = ({ input, setInput, sendMessage }: any) => (
+const InputMessage = ({ input, setInput, sendMessage , messages , createChat}: any) => (
   <div className="clear-both mt-6 flex w-full">
     <input
       type="text"
@@ -92,7 +92,7 @@ const InputMessage = ({ input, setInput, sendMessage }: any) => (
       className="ml-2 flex-none text-xs"
       disabled="true"
       onClick={() => {
-        ("");
+        createChat(messages)
       }}
     >
       Share-Chat
@@ -109,6 +109,11 @@ export function Chat() {
   const [cookie, setCookie] = useCookies([COOKIE_NAME]);
   const [agent, setAgent] = useState({ value: "", label: "default" });
   const create = trpc.auth.createUserAgent.useMutation({
+    async onSuccess() {
+      // refetches posts after a post is added
+    },
+  });
+  const saveChat = trpc.auth.saveChat.useMutation({
     async onSuccess() {
       // refetches posts after a post is added
     },
@@ -175,6 +180,18 @@ export function Chat() {
     }
   };
 
+
+  const createChat = async (Chat: JSON) => {
+    try {
+      await saveChat.mutateAsync({
+        text:JSON.stringify(Chat),
+        
+      });
+    } catch (cause) {
+      console.error({ cause }, "Failed to add post");
+    }
+  };
+
   return (
     <div className="w-11/12">
       <Agent
@@ -211,6 +228,8 @@ export function Chat() {
             input={input}
             setInput={setInput}
             sendMessage={sendMessage}
+            chat={messages}
+            createChat={saveChat}
           />
         </div>
       </div>

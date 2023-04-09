@@ -88,26 +88,16 @@ export const authRouter = router({
   saveChat: protectedProcedure
     .input(
       z.object({
-        values: z
-          .array(
-            z.object({
-                value1: z.string(),
-                value2: z.string()
-              })
-              .refine(validateSingleValue, "Value is invalid")
-          )
-          .refine(validateArray, "Array of values is invalid")
+        text: z.string(),
       })
     )
     .mutation(async ({ ctx, input }) => {
       const post = await prisma.aichats.create({
         data: {
+          
         userId:ctx.session?.user.id,
         chat:{
-          create:{
-            message:"test",
-            who:""+ctx.session?.user.name?.toString(),
-          }
+          input
         }
         },
       });
