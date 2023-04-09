@@ -50,7 +50,7 @@ model User {
   accounts      Account[]
   sessions      Session[]
   userAgents    agents[]    @relation("uagent")
-  aichat        aichat[]    @relation("ai")
+  aichat        aichats[]    @relation("ai")
   guestbook     guestbook[] @relation("guest")
   messages      message[]   @relation("post")
 }
