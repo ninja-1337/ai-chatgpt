@@ -100,7 +100,7 @@ export const authRouter = router({
       })
     )
     .mutation(async ({ ctx, input }) => {
-      const post = await prisma.aichat.create({
+      const post = await prisma.aichats.create({
         data: {
         userId:ctx.session?.user.id,
         chat:{
