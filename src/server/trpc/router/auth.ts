@@ -73,9 +73,9 @@ export const authRouter = router({
         userId : ctx.session.user.id ,
       
       },
-      include: {
-        sent_by: true, // Return all fields
-      },
+      // include: {
+      //   sent_by: true, // Return all fields
+      // },
     });
   }),
   getUserDiscoverable: protectedProcedure.query(({ ctx }) => {
