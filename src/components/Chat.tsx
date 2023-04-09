@@ -3,7 +3,7 @@ import { Button } from "./Button";
 import { type Message, ChatLine, LoadingChatLine } from "./ChatLine";
 import { useCookies } from "react-cookie";
 import Select from "react-select";
-import { ToastContainer, toast } from 'react-toastify';
+import {  toast } from 'react-toastify';
 import { trpc } from "../utils/trpc";
 const COOKIE_NAME = "nextjs-example-ai-chat-gpt3";
 
