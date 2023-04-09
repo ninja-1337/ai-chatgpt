@@ -68,7 +68,7 @@ export const authRouter = router({
     });
   }),
   getUserSavedChat: protectedProcedure.query(({ ctx, input }) => {
-    return ctx.prisma.aichat.findUnique({
+    return ctx.prisma.aichats.findMany({
       where: {
         id_userId : { id: input.toString() , userId: ctx.session.user.id },
       
