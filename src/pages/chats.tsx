@@ -40,12 +40,15 @@ const Home: NextPage = () => {
         <p>{savedChats?.map((chat) => {
     console.log(chat)
     const json:any =chat.chat
-   const message= JSON.parse(json?.input?.text)
+   const message= JSON.parse(json?.input?.toString())
     console.log(message)
    return  <><p>ChatID: {chat.id}</p>
               <p>Messages:
-              {message.map((message:any)=>{
-                <p>{message.who.text+":"+message.message.text}</p>
+              {message.map((msg:any)=>{
+                <>
+                {msg.toString}
+                <p>{msg.who.text+":"+msg.message.text}</p>
+                </>
               })}
               </p>
    </>
