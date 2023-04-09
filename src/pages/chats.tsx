@@ -6,7 +6,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import { trpc } from "../utils/trpc";
 
 const Home: NextPage = () => {
-  const hello = trpc.example.hello.useQuery({ text: "from tRPC" });
+  const hello = trpc.auth.getUserSavedChat.useQuery();
 
   return (
     <>
@@ -16,9 +16,13 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="container mx-auto flex min-h-fit flex-col items-center justify-center p-2">
+        <>
         <h1 className="text-3xl font-extrabold leading-normal text-gray-700 md:text-[5rem]">
           <span className="text-black-300">Saved Chats</span>
+        
         </h1>
+        {hello.data}
+        </>
       </main>
     </>
   );
