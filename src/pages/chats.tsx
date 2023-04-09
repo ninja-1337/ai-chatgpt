@@ -6,7 +6,8 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import { trpc } from "../utils/trpc";
 
 const Home: NextPage = () => {
-  const hello = trpc.auth.getUserSavedChat.useQuery();
+ 
+  const { data: savedChats } = trpc.auth.getUserSavedChat.useQuery();
 
   return (
     <>
@@ -21,7 +22,7 @@ const Home: NextPage = () => {
           <span className="text-black-300">Saved Chats</span>
         
         </h1>
-        {hello.data}
+        {console.log(savedChats)}
         </>
       </main>
     </>
