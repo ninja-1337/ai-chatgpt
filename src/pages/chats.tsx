@@ -11,12 +11,10 @@ const Home: NextPage = () => {
   const { data: savedChats } = trpc.auth.getUserSavedChat.useQuery();
   const chats = savedChats?.map((chat) => {
     console.log(chat)
-    const messages =JSON.parse(chat.chat?.toString()+" ") 
+    const messages =chat.chat
    return  <><p>ChatID: {chat.id}</p>
               <p>Messages:
-              { messages.map((message:any )=>{
-                return <><p>{message}</p></>
-              }) }
+              {messages?.toString()}
               </p>
    </>
 
