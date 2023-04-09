@@ -83,19 +83,12 @@ model message {
   sent_by    User     @relation("post", fields: [userId], references: [id])
 }
 
-model chatline {
-  id      String @id @default(cuid())
-  who     String
-  message String
-  userId  String
-  sent_by aichat @relation("chatline", fields: [userId], references: [id])
-}
 
-model aichat {
+model aichats {
   id      String     @id @default(cuid())
   userId  String
   sent_by User       @relation("ai", fields: [userId], references: [id])
-  chat    chatline[] @relation("chatline")
+  chat    Json 
    @@unique([id, userId])
 }
 
