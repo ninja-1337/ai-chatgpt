@@ -126,7 +126,7 @@ export function Chat() {
   agents.data?.forEach(function (agent) {
     options.push({ value: agent.id, label: agent.name });
   });
-  console.log(options);
+ 
   useEffect(() => {
     if (!cookie[COOKIE_NAME]) {
       // generate a semi random short id
@@ -160,7 +160,7 @@ export function Chat() {
 
     // strip out white spaces from the bot message
     const botNewMessage = data.text;
-    console.log(botNewMessage);
+   
     setMessages([
       ...newMessages,
       { message: botNewMessage, who: "bot" } as Message,
