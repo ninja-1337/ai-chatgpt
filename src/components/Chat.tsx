@@ -90,7 +90,7 @@ const InputMessage = ({ input, setInput, sendMessage , messages , createChat}: a
     <Button
       type=""
       className="ml-2 flex-none text-xs"
-      disabled="true"
+      disabled="false"
       onClick={() => {
         createChat(messages)
       }}
