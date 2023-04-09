@@ -9,7 +9,19 @@ import { json } from "stream/consumers";
 const Home: NextPage = () => {
  
   const { data: savedChats } = trpc.auth.getUserSavedChat.useQuery();
-  console.log(JSON.parse(savedChats))
+  const chats = savedChats?.map((chat) => {
+    console.log(chat)
+    const messages =JSON.parse(chat.chat?.toString()+" ") 
+   return  <><p>ChatID: {chat.id}</p>
+              <p>Messages:
+              { messages.map((message:any )=>{
+                return <><p>{message}</p></>
+              }) }
+              </p>
+   </>
+
+  }
+  );
   return (
     <>
       <Head>
@@ -23,7 +35,8 @@ const Home: NextPage = () => {
           <span className="text-black-300">Saved Chats</span>
         
         </h1>
-        <p>{JSON.stringify(savedChats)}</p>
+        <p>{chats}</p>
+       
         </>
       </main>
     </>
