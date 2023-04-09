@@ -22,7 +22,7 @@ const Home: NextPage = () => {
           <span className="text-black-300">Saved Chats</span>
         
         </h1>
-        {console.log(savedChats)}
+        {savedChats}
         </>
       </main>
     </>
