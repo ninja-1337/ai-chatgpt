@@ -37,7 +37,21 @@ const Home: NextPage = () => {
           <span className="text-black-300">Saved Chats</span>
         
         </h1>
-        <p>{chats}</p>
+        <p>{savedChats?.map((chat) => {
+    console.log(chat)
+    const json:any =chat.chat
+   const message= JSON.parse(json?.input?.text)
+    console.log(message)
+   return  <><p>ChatID: {chat.id}</p>
+              <p>Messages:
+              {message.map((message:any)=>{
+                <p>{message.who+":"+message.message}</p>
+              })}
+              </p>
+   </>
+
+  }
+  )}</p>
        
         </>
       </main>
