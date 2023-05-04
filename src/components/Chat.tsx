@@ -235,7 +235,7 @@ export function Chat() {
         }}
         options={options}
         isSearchable={false}
-        className={theme=="dark" ? "text-black" : "clear-both mx-4 flex"}
+        className={theme=="dark" ? " text-black bg-gray-700" : "clear-both mx-4"}
       />
       <div>
         <div className="rounded-2xl border-zinc-100 lg:border lg:p-6">
