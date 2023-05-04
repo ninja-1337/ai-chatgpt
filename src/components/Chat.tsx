@@ -15,8 +15,7 @@ export const initialMessages: Message[] = [
     message: "Hi! I’m an A.I. assistant. Ask me anything!",
   },
 ];
-const {setTheme, theme}   = useNextTheme();
- 
+
 
 const Agent = ({
   agentName,
@@ -24,8 +23,9 @@ const Agent = ({
   agentPrompt,
   setAgentPrompt,
   createNewAgent,
+  theme,
 }: any) => (
-  
+
   <div className="clear-both mt-0 flex w-full">
     Agent Name:
     <input
@@ -226,6 +226,7 @@ export function Chat() {
         agentPrompt={newAgentPrompt}
         setAgentPrompt={setNewAgentPrompt}
         createNewAgent={createAgent}
+        theme={theme}
       />
       <Select
         onChange={(state) => {
