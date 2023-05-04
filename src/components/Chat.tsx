@@ -133,12 +133,7 @@ export function Chat() {
   agents.data?.forEach(function (agent) {
     options.push({ value: agent.id, label: agent.name });
   });
-  useEffect(() => {
-    if (messagesEndRef.current) {
-      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
 
-  });
 
   useEffect(() => {
     if (!cookie[COOKIE_NAME]) {
@@ -178,6 +173,9 @@ export function Chat() {
       ...newMessages,
       { message: botNewMessage, who: "bot" } as Message,
     ]);
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
     setLoading(false);
 
   };
