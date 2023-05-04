@@ -238,7 +238,7 @@ export function Chat() {
         isSearchable={false}
         className={theme=="dark" ? " text-black bg-gray-700" : "clear-both mx-4"}
       />
-      <div>
+    
         <div className="rounded-2xl border-zinc-100 lg:border lg:p-6">
           {messages.map(({ message, who }, index) => (
             <>
@@ -263,7 +263,7 @@ export function Chat() {
             
           />
         </div>
-      </div>
+      
     </div>
   );
 }
