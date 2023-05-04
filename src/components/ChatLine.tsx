@@ -2,6 +2,7 @@ import clsx from "clsx";
 import Balancer from "react-wrap-balancer";
 import { Button } from "./Button";
 import React, { useState } from "react";
+import { useTheme as useNextTheme } from 'next-themes'
 // wrap Balancer to remove type errors :( - @TODO - fix this ugly hack
 const BalancerWrapper = (props: any) => <Balancer {...props} />;
 
@@ -54,7 +55,8 @@ export function ChatLine({ who = "bot", message }: Message) {
     return null;
   }
   const formatteMessage = convertNewLines(message);
-
+  const {setTheme, theme}   = useNextTheme();
+ 
   return (
     <div
       className={
@@ -65,10 +67,16 @@ export function ChatLine({ who = "bot", message }: Message) {
         <div
           className={clsx(
             "text ",
-            who == "bot"
+           ( who == "bot" && theme=="dark")
               ? "font- float-right mb-5 rounded-xl  px-4 py-5 font-semibold shadow-xl  sm:px-6"
               : "text-white-400   ",
-            who == "user"
+              ( who == "bot")
+              ? "font- float-right mb-5 rounded-xl  px-4 py-5 font-semibold shadow-xl  sm:px-6"
+              : "text-white-400   ",
+              (who == "user" && theme=="dark")
+              ? "font- float-right mb-5 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-800 px-4 py-5 font-semibold shadow-lg ring-1 ring-zinc-100 sm:px-6"
+              : "font- float-right mb-5 rounded-xl bg-gradient-to-r from-orange-600 to-orange-800 px-4 py-5 font-semibold shadow-lg ring-1 ring-zinc-100 sm:px-6",
+            (who == "user")
               ? "font- float-right mb-5 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-300 px-4 py-5 font-semibold shadow-lg ring-1 ring-zinc-100 sm:px-6"
               : "font- float-right mb-5 rounded-xl bg-gradient-to-r from-orange-400 to-orange-300 px-4 py-5 font-semibold shadow-lg ring-1 ring-zinc-100 sm:px-6"
           )}
