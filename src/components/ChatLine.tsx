@@ -67,9 +67,6 @@ export function ChatLine({ who = "bot", message }: Message) {
         <div
           className={clsx(
             "text ",
-           ( who == "bot" && theme=="dark")
-              ? "font- float-right mb-5 rounded-xl  px-4 py-5 font-semibold shadow-xl  sm:px-6"
-              : "text-white-400   ",
               ( who == "bot")
               ? "font- float-right mb-5 rounded-xl  px-4 py-5 font-semibold shadow-xl  sm:px-6"
               : "text-white-400   ",
