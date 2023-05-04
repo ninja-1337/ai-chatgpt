@@ -253,6 +253,7 @@ export function Chat() {
               Type a message to start the conversation
             </span>
           )}
+          <div  className="inset-x-0 bottom-0">
           <InputMessage
             input={input}
             setInput={setInput}
@@ -260,8 +261,9 @@ export function Chat() {
             chat={messages}
             createChat={createChat}
             theme={theme}
-            className="inset-x-0 bottom-0"
+           
           />
+          </div>
         </div>
       
     </div>
