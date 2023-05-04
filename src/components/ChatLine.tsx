@@ -45,7 +45,7 @@ const convertNewLines = (text: string) =>
 const copyContent = async (text: string) => {
   try {
     await navigator.clipboard.writeText(text);
-    console.log("Content copied to clipboard");
+   
   } catch (err) {
     console.error("Failed to copy: ", err);
   }
@@ -70,12 +70,10 @@ export function ChatLine({ who = "bot", message }: Message) {
               ( who == "bot")
               ? "font- float-right mb-5 rounded-xl  px-4 py-5 font-semibold shadow-xl  sm:px-6"
               : "text-white-400   ",
-              (who == "user" && theme=="dark")
-              ? "font- float-right mb-5 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-800 px-4 py-5 font-semibold shadow-lg ring-1 ring-zinc-100 sm:px-6"
-              : "font- float-right mb-5 rounded-xl bg-gradient-to-r from-orange-600 to-orange-800 px-4 py-5 font-semibold shadow-lg ring-1 ring-zinc-100 sm:px-6",
-            (who == "user")
+               (who == "user")
               ? "font- float-right mb-5 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-300 px-4 py-5 font-semibold shadow-lg ring-1 ring-zinc-100 sm:px-6"
-              : "font- float-right mb-5 rounded-xl bg-gradient-to-r from-orange-400 to-orange-300 px-4 py-5 font-semibold shadow-lg ring-1 ring-zinc-100 sm:px-6"
+              : "font- float-right mb-5 rounded-xl bg-gradient-to-r from-orange-400 to-orange-300 px-4 py-5 font-semibold shadow-lg ring-1 ring-zinc-100 sm:px-6",
+           
           )}
         >
           <div className="flex space-x-3">
