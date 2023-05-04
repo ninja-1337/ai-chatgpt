@@ -235,12 +235,13 @@ export function Chat() {
         }}
         options={options}
         isSearchable={false}
+        className="text-slate-900"
         theme={(theme) => ({
           ...theme,
           borderRadius: 0,
           colors: {
             ...theme.colors,
-            primary25: 'hotpink',
+            primary25: 'black',
             primary: 'black',
           },
         })}
