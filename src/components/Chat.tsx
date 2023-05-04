@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "./Button";
 import { type Message, ChatLine, LoadingChatLine } from "./ChatLine";
 import { useCookies } from "react-cookie";
@@ -119,7 +119,7 @@ export function Chat() {
     },
   });
   const {setTheme, theme}   = useNextTheme();
- 
+  const messagesEndRef = useRef<HTMLInputElement>(null);
   const saveChat = trpc.auth.saveChat.useMutation({
     async onSuccess() {
       // refetches posts after a post is added
@@ -133,7 +133,13 @@ export function Chat() {
   agents.data?.forEach(function (agent) {
     options.push({ value: agent.id, label: agent.name });
   });
- 
+  useEffect(() => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+
+  });
+
   useEffect(() => {
     if (!cookie[COOKIE_NAME]) {
       // generate a semi random short id
@@ -173,6 +179,7 @@ export function Chat() {
       { message: botNewMessage, who: "bot" } as Message,
     ]);
     setLoading(false);
+
   };
 
   const createAgent = async (AgentName: string, AgentPrompt: string) => {
@@ -219,6 +226,7 @@ export function Chat() {
     }
   };
 
+
   return (
     <div className="w-11/12 h-5/6">
       <Agent
@@ -253,7 +261,7 @@ export function Chat() {
               Type a message to start the conversation
             </span>
           )}
-   
+    <div ref={messagesEndRef} />
      
        
         </div>
