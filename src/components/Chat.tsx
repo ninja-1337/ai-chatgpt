@@ -152,9 +152,7 @@ export function Chat() {
     ];
     setMessages(newMessages);
     const last10mesages = newMessages.slice(-10);
-    if (messagesEndRef.current) {
-      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
+
     const response = await fetch("/api/chat", {
       method: "POST",
       headers: {
