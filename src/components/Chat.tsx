@@ -246,7 +246,7 @@ export function Chat() {
         className={theme=="dark" ? " text-black bg-gray-700" : "clear-both mx-4"}
       />
     
-        <div className="h-full overflow-y-auto overflow-hidden rounded-2xl pt-1 lg:p-6">
+        <div className="h-full overflow-y-auto overflow-hidden rounded-2xl pt-1 lg:p-3">
           {messages.map(({ message, who }, index) => (
             <>
               <ChatLine key={index} who={who} message={message} theme={theme}/>
