@@ -12,7 +12,7 @@ function Home() {
         </section>
       )}
       {session && (
-        <section className="flex h-5/6 flex-col items-center gap-3">
+        <section className="flex h-full flex-col items-center gap-3">
           <Chat />
         </section>
       )}
