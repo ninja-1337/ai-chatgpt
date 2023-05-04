@@ -235,7 +235,7 @@ export function Chat() {
         }}
         options={options}
         isSearchable={false}
-        className="text-slate-900"
+        className={theme=="dark" ? "clear-both mx-4 flex  text-slate-200" : "clear-both mx-4 flex  text-gray-600"}
         theme={(theme) => ({
           ...theme,
           borderRadius: 0,
@@ -257,7 +257,7 @@ export function Chat() {
           {loading && <LoadingChatLine />}
 
           {messages.length < 2 && (
-            <span className={theme=="dark" ? "clear-both mx-4 flex  text-slate-200" : "clear-both mx-4 flex  text-gray-600"}>
+            <span className={theme=="dark" ? "bg-gray-700  text-slate-200" : "clear-both mx-4 flex  text-gray-600"}>
               Type a message to start the conversation
             </span>
           )}
