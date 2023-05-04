@@ -254,7 +254,10 @@ export function Chat() {
             </span>
           )}
    
-          <InputMessage
+     
+       
+        </div>
+        <InputMessage
             input={input}
             setInput={setInput}
             sendMessage={sendMessage}
@@ -263,9 +266,6 @@ export function Chat() {
             theme={theme}
            
           />
-       
-        </div>
-      
     </div>
   );
 }
