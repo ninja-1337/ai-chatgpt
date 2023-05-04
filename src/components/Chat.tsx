@@ -235,6 +235,15 @@ export function Chat() {
         }}
         options={options}
         isSearchable={false}
+        theme={(theme) => ({
+          ...theme,
+          borderRadius: 0,
+          colors: {
+            ...theme.colors,
+            primary25: 'hotpink',
+            primary: 'black',
+          },
+        })}
       />
       <div>
         <div className="rounded-2xl border-zinc-100 lg:border lg:p-6">
@@ -258,6 +267,7 @@ export function Chat() {
             chat={messages}
             createChat={createChat}
             theme={theme}
+            
           />
         </div>
       </div>
