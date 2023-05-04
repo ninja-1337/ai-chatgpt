@@ -239,7 +239,7 @@ export function Chat() {
         className={theme=="dark" ? " text-black bg-gray-700" : "clear-both mx-4"}
       />
     
-        <div className="h-full rounded-2xl border-zinc-100 lg:border lg:p-6">
+        <div className="h-full rounded-2xl border-zinc-100 lg:border pt-1 lg:p-6">
           {messages.map(({ message, who }, index) => (
             <>
               <ChatLine key={index} who={who} message={message} theme={theme}/>
@@ -253,7 +253,7 @@ export function Chat() {
               Type a message to start the conversation
             </span>
           )}
-          <div  className="inset-x-0 bottom-0">
+          <div  className="absolute bottom-0">
           <InputMessage
             input={input}
             setInput={setInput}
