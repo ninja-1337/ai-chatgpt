@@ -9,6 +9,7 @@ const BalancerWrapper = (props: any) => <Balancer {...props} />;
 export type Message = {
   who: "bot" | "user" | undefined;
   message?: string;
+  theme?:any;
 };
 
 // loading placeholder animation for the chat line
@@ -50,7 +51,7 @@ const copyContent = async (text: string) => {
     console.error("Failed to copy: ", err);
   }
 };
-export function ChatLine({ who = "bot", message }: Message) {
+export function ChatLine({ who = "bot", message, theme  }: Message  ) {
   if (!message) {
     return null;
   }
@@ -69,7 +70,10 @@ export function ChatLine({ who = "bot", message }: Message) {
             who == "bot"
               ? "font- float-right mb-5 rounded-xl  px-4 py-5 font-semibold shadow-xl  sm:px-6"
               : "text-white-400   ",
-            who == "user"
+            (who == "user"&&theme=="dark")
+              ? "font- float-right mb-5 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-300 px-4 py-5 font-semibold shadow-lg ring-1 ring-zinc-100 sm:px-6"
+              : "font- float-right mb-5 rounded-xl bg-gradient-to-r from-orange-400 to-orange-300 px-4 py-5 font-semibold shadow-lg ring-1 ring-zinc-100 sm:px-6",
+              (who == "user"&&theme=="light")
               ? "font- float-right mb-5 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-300 px-4 py-5 font-semibold shadow-lg ring-1 ring-zinc-100 sm:px-6"
               : "font- float-right mb-5 rounded-xl bg-gradient-to-r from-orange-400 to-orange-300 px-4 py-5 font-semibold shadow-lg ring-1 ring-zinc-100 sm:px-6",
              

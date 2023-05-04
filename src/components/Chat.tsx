@@ -13,6 +13,7 @@ export const initialMessages: Message[] = [
   {
     who: "bot",
     message: "Hi! I’m an A.I. assistant. Ask me anything!",
+
   },
 ];
 
@@ -241,7 +242,7 @@ export function Chat() {
         <div className="rounded-2xl border-zinc-100 lg:border lg:p-6">
           {messages.map(({ message, who }, index) => (
             <>
-              <ChatLine key={index} who={who} message={message} />
+              <ChatLine key={index} who={who} message={message} theme={theme}/>
             </>
           ))}
 
