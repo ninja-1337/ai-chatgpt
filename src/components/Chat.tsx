@@ -65,7 +65,7 @@ const Agent = ({
 );
 
 const InputMessage = ({ input, setInput, sendMessage , messages , createChat ,theme }: any) => (
-  <div className="clear-both mt-6 flex w-full">
+  <div className="absolute bottom-0 clear-both mt-6 flex w-full">
     <input
       type="text"
       aria-label="chat input"
@@ -253,7 +253,7 @@ export function Chat() {
               Type a message to start the conversation
             </span>
           )}
-          <div  className="absolute bottom-0">
+   
           <InputMessage
             input={input}
             setInput={setInput}
@@ -263,7 +263,7 @@ export function Chat() {
             theme={theme}
            
           />
-          </div>
+       
         </div>
       
     </div>
