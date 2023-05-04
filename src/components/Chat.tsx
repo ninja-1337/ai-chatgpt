@@ -5,6 +5,7 @@ import { useCookies } from "react-cookie";
 import Select from "react-select";
 import {  toast } from 'react-toastify';
 import { trpc } from "../utils/trpc";
+import { useTheme as useNextTheme } from 'next-themes'
 const COOKIE_NAME = "nextjs-example-ai-chat-gpt3";
 
 // default first message to display in UI (not necessary to define the prompt)
@@ -14,6 +15,8 @@ export const initialMessages: Message[] = [
     message: "Hi! I’m an A.I. assistant. Ask me anything!",
   },
 ];
+const {setTheme, theme}   = useNextTheme();
+ 
 
 const Agent = ({
   agentName,
@@ -22,13 +25,14 @@ const Agent = ({
   setAgentPrompt,
   createNewAgent,
 }: any) => (
+  
   <div className="clear-both mt-0 flex w-full">
     Agent Name:
     <input
       type="text"
       aria-label="chat input"
       required
-      className="min-w-0 flex-auto appearance-none rounded-md border border-zinc-900/10 bg-white px-3 py-[calc(theme(spacing.2)-1px)] shadow-md shadow-zinc-800/5 placeholder:text-zinc-400 focus:border-teal-500 focus:outline-none focus:ring-4 focus:ring-teal-500/10 sm:text-sm"
+      className={theme=="dark" ? "min-w-0 flex-auto appearance-none rounded-md border border-zinc-900/10 bg-gray-500 px-3 py-[calc(theme(spacing.2)-1px)] shadow-md shadow-zinc-800/5 placeholder:text-black focus:border-teal-500 focus:outline-none focus:ring-4 focus:ring-teal-500/10 sm:text-sm" : "min-w-0 flex-auto appearance-none rounded-md border border-zinc-900/10 bg-white px-3 py-[calc(theme(spacing.2)-1px)] shadow-md shadow-zinc-800/5 placeholder:text-zinc-400 focus:border-teal-500 focus:outline-none focus:ring-4 focus:ring-teal-500/10 sm:text-sm"}
       value={agentName}
       onChange={(e) => {
         setAgentName(e.target.value);
@@ -113,6 +117,8 @@ export function Chat() {
       // refetches posts after a post is added
     },
   });
+  const {setTheme, theme}   = useNextTheme();
+ 
   const saveChat = trpc.auth.saveChat.useMutation({
     async onSuccess() {
       // refetches posts after a post is added
@@ -240,7 +246,7 @@ export function Chat() {
           {loading && <LoadingChatLine />}
 
           {messages.length < 2 && (
-            <span className="clear-both mx-4 flex  text-gray-600">
+            <span className={theme=="dark" ? "clear-both mx-4 flex  text-slate-200" : "clear-both mx-4 flex  text-gray-600"}>
               Type a message to start the conversation
             </span>
           )}
