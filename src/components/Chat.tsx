@@ -253,7 +253,7 @@ export function Chat() {
               Type a message to start the conversation
             </span>
           )}
-          <div  className="relative bottom-0">
+          <div  className="object-bottom">
           <InputMessage
             input={input}
             setInput={setInput}
