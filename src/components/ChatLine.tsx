@@ -80,8 +80,8 @@ export function ChatLine({ who = "bot", message, theme  }: Message  ) {
             "text ",
            
               (who == "user"&&theme=="dark")
-              ? "font- float-right mb-5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 px-4 py-5 font-semibold shadow-lg ring-1 ring-zinc-100 sm:px-6"
-              : "font- float-right mb-5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-700 px-4 py-5 font-semibold shadow-lg ring-1 ring-zinc-100 sm:px-6",
+              ? "font- float-right mb-5 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-700 px-4 py-5 font-semibold shadow-lg ring-1 ring-zinc-100 sm:px-6"
+              : "font- float-right mb-5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 px-4 py-5 font-semibold shadow-lg ring-1 ring-zinc-100 sm:px-6",
              
           )}
         >
