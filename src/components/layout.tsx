@@ -1,6 +1,6 @@
 // components/layout.js
 
-import Navbar from "./NavBartest";
+import Navbar from "./NavBar";
 interface Props {
   children: JSX.Element[] | JSX.Element;
 }
