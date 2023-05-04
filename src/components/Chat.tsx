@@ -175,10 +175,11 @@ export function Chat() {
       ...newMessages,
       { message: botNewMessage, who: "bot" } as Message,
     ]);
+ 
+    setLoading(false);
     if (messagesEndRef.current) {
       messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
     }
-    setLoading(false);
 
   };
 
