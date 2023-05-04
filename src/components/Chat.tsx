@@ -260,7 +260,7 @@ export function Chat() {
             chat={messages}
             createChat={createChat}
             theme={theme}
-            
+            className="inset-x-0 bottom-0"
           />
         </div>
       
