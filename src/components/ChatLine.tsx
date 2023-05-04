@@ -70,12 +70,13 @@ export function ChatLine({ who = "bot", message, theme  }: Message  ) {
             who == "bot"
               ? "font- float-right mb-5 rounded-xl  px-4 py-5 font-semibold shadow-xl  sm:px-6"
               : "text-white-400   ",
-            (who == "user"&&theme=="dark")
-              ? "font- float-right mb-5 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-700 px-4 py-5 font-semibold shadow-lg ring-1 ring-zinc-100 sm:px-6"
-              : "font- float-right mb-5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-700 px-4 py-5 font-semibold shadow-lg ring-1 ring-zinc-100 sm:px-6",
+           
               (who == "bot"&&theme=="dark")
               ? "font- float-right mb-5 rounded-xl bg-gradient-to-r from-orange-600 to-orange-800 px-4 py-5 font-semibold shadow-lg ring-1 ring-zinc-100 sm:px-6"
               : "font- float-right mb-5 rounded-xl bg-gradient-to-r from-orange-400 to-orange-300 px-4 py-5 font-semibold shadow-lg ring-1 ring-zinc-100 sm:px-6",
+              (who == "user"&&theme=="dark")
+              ? "font- float-right mb-5 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-700 px-4 py-5 font-semibold shadow-lg ring-1 ring-zinc-100 sm:px-6"
+              : "font- float-right mb-5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-700 px-4 py-5 font-semibold shadow-lg ring-1 ring-zinc-100 sm:px-6",
              
           )}
         >
