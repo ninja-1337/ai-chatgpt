@@ -55,10 +55,7 @@ export function ChatLine({ who = "bot", message }: Message) {
     return null;
   }
   const formatteMessage = convertNewLines(message);
-  const { theme}   = useNextTheme();
-  if (theme=="dark") {
-    let x="gg";
-  }
+
   return (
     <div
       className={
