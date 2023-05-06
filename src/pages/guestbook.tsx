@@ -88,7 +88,7 @@ const Home: NextPage = () => {
               id="body"
               name="body"
               required
-              className="mt-1 block w-full rounded-md border-gray-300 bg-white py-2 pl-4 pr-32 text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-500 dark:text-gray-100"
+              className=" block w-full rounded-md border-gray-300 bg-white py-2 pl-4 pr-32 text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-500 dark:text-gray-100"
             />
             <button
               type="submit"
