@@ -26,15 +26,29 @@ function NavBar() {
   const { data: session, status } = useSession();
   const navbarToggleRef = useRef();
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
-  const {setTheme,theme}   = useNextTheme("dark");
-  const {themestate}= useState(theme)
- 
+  const [mounted, setMounted] = useState(false);
+
+  const {themestate}   = useNextTheme();
+
+  const { systemTheme, theme, setTheme } = useNextTheme();
+
+  const [switchstate, setSwitchState] = useState(themestate ? true:false );
+
 
 
 
   const HandleSideMenu = () => {
     isSideMenuOpen && navbarToggleRef.current.click();
   };
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  // useEffect(()=>{
+  //   setSwitchState(themestate ? false:true)
+  //   setTheme(switchstate==true ?"light":"dark")
+  //     },[])
+  if (!mounted) return null;
+  const currentTheme = theme === 'system' ? systemTheme : theme;
 
   return (
     <Navbar  css={{
@@ -100,13 +114,30 @@ function NavBar() {
         }}
       >
     
-        <Switch
-        checked={themestate=="dark" ? false: true}
-        onChange={(e) => setTheme(e.target.checked ? 'dark' : 'light')}
+      
+{currentTheme === 'dark' ? (
+              <Switch
+              checked={true}
+              onChange={(e) => {setTheme( 'light')
+                  setSwitchState(e.target.checked)
+            }}
+      
+              iconOn={<MoonIcon filled />}
+                iconOff={<SunIcon filled />}
+            />
+          ) : (
+            <Switch
+            checked={false}
+            onChange={(e) => {setTheme('dark')
+                setSwitchState(e.target.checked)
+          }}
+    
+            iconOn={<MoonIcon filled />}
+              iconOff={<SunIcon filled />}
+          />
+          )}
 
-        iconOn={<MoonIcon filled />}
-          iconOff={<SunIcon filled />}
-      />
+
         <Dropdown placement="bottom-right">
           <Navbar.Item>
             <>
