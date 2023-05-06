@@ -92,7 +92,7 @@ const Home: NextPage = () => {
             />
             <button
               type="submit"
-              className="absolute right-1 top-5 flex h-8 w-28 items-center justify-center rounded bg-gray-100   font-medium text-gray-900 dark:bg-gray-700 dark:text-gray-100"
+              className="absolute right-1 top-2 flex h-8 w-28 items-center justify-center rounded bg-gray-100   font-medium text-gray-900 dark:bg-gray-700 dark:text-gray-100"
             >
               Post
             </button>
