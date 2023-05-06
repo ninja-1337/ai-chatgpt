@@ -243,7 +243,8 @@ export function Chat() {
         }}
         options={options}
         isSearchable={false}
-        className={theme=="dark" ? " text-black bg-gray-700" : "clear-both mx-4"}
+        className={theme=="dark" ? "my-react-select-container" : "clear-both mx-4"}
+        classNamePrefix={theme=="dark" ? "my-react-select" : ""}
       />
     
         <div className="h-full overflow-y-auto overflow-hidden rounded-2xl pt-1 lg:p-3">
