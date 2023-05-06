@@ -11,11 +11,11 @@
     }
   
     .my-react-select-container .my-react-select__control--is-focused {
-      @apply border-neutral-500 hover:border-neutral-500 dark:border-neutral-400 dark:hover:border-neutral-400 shadow-none;
+      @apply border-gray-700 hover:border-neutral-500 dark:border-neutral-400 dark:hover:border-neutral-400 shadow-none;
     }
   
     .my-react-select-container .my-react-select__menu {
-      @apply bg-neutral-100 dark:bg-gray-700 border-2 border-neutral-300 dark:border-neutral-600;
+      @apply bg-grey-100 dark:bg-gray-700 border-2 border-neutral-300 dark:border-neutral-600;
     }
   
     .my-react-select-container .my-react-select__option {
