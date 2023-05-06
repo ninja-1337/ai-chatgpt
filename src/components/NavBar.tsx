@@ -1,6 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 //@ts-nocheck
-import React from "react";
+import React, { useEffect } from "react";
 import { SocialIcon } from "react-social-icons";
 import Image from "next/image";
 import { signIn, signOut, useSession } from "next-auth/react";
