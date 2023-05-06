@@ -243,7 +243,7 @@ export function Chat() {
         }}
         options={options}
         isSearchable={false}
-        className={theme=="dark" ? "my-react-select-container" : "clear-both mx-4"}
+        className={theme=="dark" ? "my-react-select-container pt-1" : "clear-both mx-4 pt-1"}
         classNamePrefix={theme=="dark" ? "my-react-select" : ""}
       />
     
